@@ -10,6 +10,7 @@ export class AIError extends Error {
 }
 
 export interface ChatOptions {
+  providerId?: string;
   baseUrl: string;
   apiKey: string;
   model: string;
@@ -20,7 +21,7 @@ export interface ChatOptions {
 }
 
 export async function chatCompletion(opts: ChatOptions): Promise<string> {
-  const { baseUrl, apiKey, model, system, user } = opts;
+  const { providerId, baseUrl, apiKey, model, system, user } = opts;
   const timeoutMs = opts.timeoutMs ?? 60000;
   const temperature = opts.temperature ?? 0.7;
 
@@ -33,22 +34,41 @@ export async function chatCompletion(opts: ChatOptions): Promise<string> {
 
   let res: Response;
   try {
-    res = await fetch(`${baseUrl}/chat/completions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model,
-        temperature,
-        messages: [
-          { role: 'system', content: system },
-          { role: 'user', content: user },
-        ],
-      }),
-      signal: controller.signal,
-    });
+    if (providerId === 'gemini') {
+      res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: system }] },
+            contents: [{ role: 'user', parts: [{ text: user }] }],
+            generationConfig: {
+              temperature,
+              responseMimeType: 'application/json',
+            },
+          }),
+          signal: controller.signal,
+        },
+      );
+    } else {
+      res = await fetch(`${baseUrl}/chat/completions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model,
+          temperature,
+          messages: [
+            { role: 'system', content: system },
+            { role: 'user', content: user },
+          ],
+        }),
+        signal: controller.signal,
+      });
+    }
   } catch (e) {
     throw new AIError(
       e instanceof DOMException && e.name === 'AbortError'
@@ -87,8 +107,13 @@ export async function chatCompletion(opts: ChatOptions): Promise<string> {
   } catch {
     throw new AIError('Provider returned an invalid response.');
   }
-  const text = (data as { choices?: { message?: { content?: string } }[] })?.choices?.[0]?.message
-    ?.content;
+  const text =
+    providerId === 'gemini'
+      ? (data as {
+          candidates?: { content?: { parts?: { text?: string }[] } }[];
+        })?.candidates?.[0]?.content?.parts?.map((part) => part.text ?? '').join('')
+      : (data as { choices?: { message?: { content?: string } }[] })?.choices?.[0]?.message
+          ?.content;
   if (!text || !text.trim()) throw new AIError('Provider returned an empty response.');
   return text;
 }
