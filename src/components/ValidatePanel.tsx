@@ -42,6 +42,7 @@ export function ValidatePanel({
   const validation = idea.validation;
 
   const resolveCall = () => ({
+    providerId: settings.providerId,
     baseUrl: resolveBaseUrl(settings.providerId, settings.customBaseUrl),
     apiKey: settings.apiKey.trim(),
     model: resolveModel(settings.providerId, settings.model),
