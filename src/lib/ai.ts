@@ -18,12 +18,14 @@ export interface ChatOptions {
   user: string;
   timeoutMs?: number;
   temperature?: number;
+  responseFormatJson?: boolean;
 }
 
 export async function chatCompletion(opts: ChatOptions): Promise<string> {
   const { providerId, baseUrl, apiKey, model, system, user } = opts;
   const timeoutMs = opts.timeoutMs ?? 60000;
   const temperature = opts.temperature ?? 0.7;
+  const responseFormatJson = opts.responseFormatJson ?? false;
 
   if (!baseUrl) throw new AIError('No API base URL configured. Pick a provider or enter a custom base URL in Settings.');
   if (!apiKey) throw new AIError('No API key set. Add your key in Settings to use AI validation.');
@@ -39,13 +41,16 @@ export async function chatCompletion(opts: ChatOptions): Promise<string> {
         `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': apiKey,
+          },
           body: JSON.stringify({
             systemInstruction: { parts: [{ text: system }] },
             contents: [{ role: 'user', parts: [{ text: user }] }],
             generationConfig: {
               temperature,
-              responseMimeType: 'application/json',
+              ...(responseFormatJson ? { responseMimeType: 'application/json' } : {}),
             },
           }),
           signal: controller.signal,
