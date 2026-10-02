@@ -10,6 +10,13 @@ export interface ProviderPreset {
 
 export const PROVIDER_PRESETS: ProviderPreset[] = [
   {
+    id: 'gemini',
+    name: 'Google Gemini',
+    baseUrl: 'https://generativelanguage.googleapis.com/v1beta',
+    defaultModel: '',
+    keyUrl: 'https://aistudio.google.com/apikey',
+  },
+  {
     id: 'openai',
     name: 'OpenAI',
     baseUrl: 'https://api.openai.com/v1',
