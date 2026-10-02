@@ -53,7 +53,7 @@ export function ValidatePanel({
     setError(null);
     try {
       const { system, user } = buildValidationPrompt(idea, settings.tone);
-      const text = await chatCompletion({ ...resolveCall(), system, user });
+      const text = await chatCompletion({ ...resolveCall(), system, user, responseFormatJson: true });
       const payload = extractJson(text);
       const normalized = normalizeValidation(payload, {
         source: 'ai',
