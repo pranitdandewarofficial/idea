@@ -24,11 +24,11 @@ describe('getPreset fallback', () => {
   it('falls back to a preset instead of crashing on unknown ids', () => {
     const preset = getPreset('not-a-provider');
     expect(PROVIDER_PRESETS).toContainEqual(preset);
-    expect(preset.id).toBe('together');
+    expect(preset.id).toBe('openrouter');
   });
 
   it('unknown provider ids resolve to the fallback preset base URL', () => {
-    expect(resolveBaseUrl('not-a-provider', '')).toBe(PROVIDER_PRESETS[3].baseUrl);
+    expect(resolveBaseUrl('not-a-provider', '')).toBe(getPreset('not-a-provider').baseUrl);
   });
 });
 
@@ -43,6 +43,6 @@ describe('resolveModel', () => {
   });
 
   it('falls back to the fallback preset default for unknown providers', () => {
-    expect(resolveModel('not-a-provider', '')).toBe(PROVIDER_PRESETS[3].defaultModel);
+    expect(resolveModel('not-a-provider', '')).toBe(getPreset('not-a-provider').defaultModel);
   });
 });
