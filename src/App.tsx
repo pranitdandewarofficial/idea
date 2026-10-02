@@ -47,18 +47,6 @@ export default function App() {
     saveState(state);
   }, [state]);
 
-  if (!onboardingDone) {
-    return (
-      <SetupScreen
-        initialSettings={state.settings}
-        onComplete={(patch) => {
-          setState((s) => ({ ...s, settings: { ...s.settings, ...patch } }));
-          setOnboardingDone(true);
-        }}
-      />
-    );
-  }
-
   const updateIdea = (id: string, patch: Partial<Idea>) =>
     setState((s) => ({
       ...s,
@@ -161,6 +149,18 @@ export default function App() {
   }, [state.ideas, search, tagFilter, starredOnly]);
 
   const selected = selectedId ? state.ideas.find((i) => i.id === selectedId) ?? null : null;
+
+  if (!onboardingDone) {
+    return (
+      <SetupScreen
+        initialSettings={state.settings}
+        onComplete={(patch) => {
+          setState((s) => ({ ...s, settings: { ...s.settings, ...patch } }));
+          setOnboardingDone(true);
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-dvh bg-ink-950 text-ivory">
