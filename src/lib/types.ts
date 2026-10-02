@@ -117,7 +117,7 @@ export function newIdea(title: string, description: string, tags: string[]): Ide
 }
 
 export const DEFAULT_SETTINGS: AISettings = {
-  providerId: 'groq',
+  providerId: 'gemini',
   customBaseUrl: '',
   apiKey: '',
   model: '',
