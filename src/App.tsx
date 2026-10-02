@@ -15,6 +15,7 @@ import { CaptureModal, type CaptureData } from './components/CaptureModal';
 import { IdeaCard } from './components/IdeaCard';
 import { IdeaDetail } from './components/IdeaDetail';
 import { SettingsPanel } from './components/SettingsPanel';
+import { SetupScreen, hasCompletedOnboarding } from './components/SetupScreen';
 import { TrackerBoard } from './components/TrackerBoard';
 import { EmptyState, Icon, type IconName } from './components/ui';
 
@@ -28,6 +29,7 @@ const TABS: { id: Tab; label: string; icon: IconName }[] = [
 
 export default function App() {
   const [state, setState] = useState<AppState>(loadState);
+  const [onboardingDone, setOnboardingDone] = useState(hasCompletedOnboarding);
   const [tab, setTab] = useState<Tab>('vault');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [captureOpen, setCaptureOpen] = useState(false);
@@ -38,6 +40,18 @@ export default function App() {
   useEffect(() => {
     saveState(state);
   }, [state]);
+
+  if (!onboardingDone) {
+    return (
+      <SetupScreen
+        initialSettings={state.settings}
+        onComplete={(patch) => {
+          setState((s) => ({ ...s, settings: { ...s.settings, ...patch } }));
+          setOnboardingDone(true);
+        }}
+      />
+    );
+  }
 
   const updateIdea = (id: string, patch: Partial<Idea>) =>
     setState((s) => ({
