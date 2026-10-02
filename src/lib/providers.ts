@@ -67,3 +67,44 @@ export function resolveModel(providerId: string, model: string): string {
   if (m) return m;
   return getPreset(providerId).defaultModel;
 }
+
+
+export interface GeminiModel {
+  name: string;
+  displayName: string;
+  supportedGenerationMethods: string[];
+}
+
+export async function listGeminiModels(apiKey: string): Promise<GeminiModel[]> {
+  const key = apiKey.trim();
+  if (!key) throw new Error('Enter a Gemini API key first.');
+
+  const models: GeminiModel[] = [];
+  let pageToken = '';
+  do {
+    const url = new URL('https://generativelanguage.googleapis.com/v1beta/models');
+    url.searchParams.set('key', key);
+    url.searchParams.set('pageSize', '1000');
+    if (pageToken) url.searchParams.set('pageToken', pageToken);
+
+    const res = await fetch(url);
+    const data = (await res.json()) as {
+      models?: GeminiModel[];
+      nextPageToken?: string;
+      error?: { message?: string };
+    };
+    if (!res.ok) throw new Error(data.error?.message || `Gemini models request failed (${res.status}).`);
+
+    models.push(...(data.models ?? []).filter((m) =>
+      m.supportedGenerationMethods?.includes('generateContent'),
+    ));
+    pageToken = data.nextPageToken ?? '';
+  } while (pageToken);
+
+  return models
+    .map((m) => ({
+      ...m,
+      name: m.name.replace(/^models\//, ''),
+    }))
+    .sort((a, b) => a.displayName.localeCompare(b.displayName));
+}
