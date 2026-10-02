@@ -4,15 +4,6 @@ import type { AISettings } from '../lib/types';
 import { ErrorBanner, Icon, PrimaryButton, Spinner, inputClass } from './ui';
 
 const SETUP_KEY = 'ideaforge:onboarding:v2';
-
-export function hasCompletedOnboarding(): boolean {
-  try {
-    return localStorage.getItem(SETUP_KEY) === '1';
-  } catch {
-    return false;
-  }
-}
-
 export function SetupScreen({
   initialSettings,
   onComplete,
