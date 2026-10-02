@@ -10,7 +10,8 @@ permissions:
 
 jobs:
   build-apk:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.x
           cache: npm
 
       - name: Install dependencies
@@ -61,15 +62,25 @@ jobs:
       - name: Publish APK to builds branch
         run: |
           set -e
+
           APK=android/app/build/outputs/apk/debug/app-debug.apk
+
           ls -la "$APK"
           cp "$APK" /tmp/ideaforge-debug.apk
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git branch -D builds 2>/dev/null || true
+
           git checkout --orphan builds
+
           git rm -rf . > /dev/null 2>&1 || true
+
           cp /tmp/ideaforge-debug.apk ./ideaforge-debug.apk
+
           git add ideaforge-debug.apk
+
           git commit -m "APK build #$GITHUB_RUN_NUMBER ($GITHUB_SHA)"
+
           git push --force origin builds
