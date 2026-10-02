@@ -90,6 +90,7 @@ export function RoadmapPanel({
         system,
         user,
         timeoutMs: 90000,
+        responseFormatJson: true,
       });
       const normalized = normalizeEnriched(extractJson(text));
       if (normalized) {
