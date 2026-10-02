@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { findWorkingGeminiModel } from '../lib/providers';
 import type { AISettings } from '../lib/types';
 import { ErrorBanner, Icon, PrimaryButton, Spinner, inputClass } from './ui';
@@ -11,15 +11,11 @@ export function SetupScreen({
   initialSettings: AISettings;
   onComplete: (patch: Partial<AISettings>) => void;
 }) {
-  const [apiKey, setApiKey] = useState(initialSettings.apiKey);
+  const [apiKey, setApiKey] = useState(() => initialSettings.apiKey);
   const [status, setStatus] = useState<'idle' | 'checking' | 'success' | 'error'>('idle');
   const [modelName, setModelName] = useState('');
   const [message, setMessage] = useState('');
   const [showKey, setShowKey] = useState(false);
-
-  useEffect(() => {
-    setApiKey(initialSettings.apiKey);
-  }, [initialSettings.apiKey]);
 
   const connect = async () => {
     const key = apiKey.trim();
