@@ -15,7 +15,7 @@ import { CaptureModal, type CaptureData } from './components/CaptureModal';
 import { IdeaCard } from './components/IdeaCard';
 import { IdeaDetail } from './components/IdeaDetail';
 import { SettingsPanel } from './components/SettingsPanel';
-import { SetupScreen, hasCompletedOnboarding } from './components/SetupScreen';
+import { SetupScreen } from './components/SetupScreen';
 import { TrackerBoard } from './components/TrackerBoard';
 import { EmptyState, Icon, type IconName } from './components/ui';
 
@@ -29,7 +29,13 @@ const TABS: { id: Tab; label: string; icon: IconName }[] = [
 
 export default function App() {
   const [state, setState] = useState<AppState>(loadState);
-  const [onboardingDone, setOnboardingDone] = useState(hasCompletedOnboarding);
+  const [onboardingDone, setOnboardingDone] = useState(() => {
+    try {
+      return localStorage.getItem('ideaforge:onboarding:v2') === '1';
+    } catch {
+      return false;
+    }
+  });
   const [tab, setTab] = useState<Tab>('vault');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [captureOpen, setCaptureOpen] = useState(false);
