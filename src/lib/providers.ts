@@ -83,11 +83,12 @@ export async function listGeminiModels(apiKey: string): Promise<GeminiModel[]> {
   let pageToken = '';
   do {
     const url = new URL('https://generativelanguage.googleapis.com/v1beta/models');
-    url.searchParams.set('key', key);
     url.searchParams.set('pageSize', '1000');
     if (pageToken) url.searchParams.set('pageToken', pageToken);
 
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      headers: { 'x-goog-api-key': key },
+    });
     const data = (await res.json()) as {
       models?: GeminiModel[];
       nextPageToken?: string;
@@ -95,16 +96,64 @@ export async function listGeminiModels(apiKey: string): Promise<GeminiModel[]> {
     };
     if (!res.ok) throw new Error(data.error?.message || `Gemini models request failed (${res.status}).`);
 
-    models.push(...(data.models ?? []).filter((m) =>
-      m.supportedGenerationMethods?.includes('generateContent'),
-    ));
+    models.push(
+      ...(data.models ?? []).filter((m) =>
+        m.supportedGenerationMethods?.includes('generateContent'),
+      ),
+    );
     pageToken = data.nextPageToken ?? '';
   } while (pageToken);
 
   return models
-    .map((m) => ({
-      ...m,
-      name: m.name.replace(/^models\//, ''),
-    }))
-    .sort((a, b) => a.displayName.localeCompare(b.displayName));
+    .map((m) => ({ ...m, name: m.name.replace(/^models\\//, '') }))
+    .sort((a, b) => {
+      const rank = (name: string) => {
+        const n = name.toLowerCase();
+        if (n.includes('flash-lite')) return 0;
+        if (n.includes('flash')) return 1;
+        if (n.includes('pro')) return 2;
+        return 3;
+      };
+      return rank(a.name) - rank(b.name) || a.displayName.localeCompare(b.displayName);
+    });
+}
+
+export async function findWorkingGeminiModel(apiKey: string): Promise<GeminiModel> {
+  const models = await listGeminiModels(apiKey);
+  if (!models.length) throw new Error('No Gemini model available for text generation with this key.');
+
+  const candidates = models.slice(0, 6);
+  for (const model of candidates) {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 9000);
+    try {
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model.name)}:generateContent`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': apiKey.trim(),
+          },
+          body: JSON.stringify({
+            contents: [{ role: 'user', parts: [{ text: 'Reply with exactly: OK' }] }],
+            generationConfig: { temperature: 0, maxOutputTokens: 8 },
+          }),
+          signal: controller.signal,
+        },
+      );
+      if (!res.ok) continue;
+      const data = (await res.json()) as {
+        candidates?: { content?: { parts?: { text?: string }[] } }[];
+      };
+      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('').trim();
+      if (text) return model;
+    } catch {
+      // Try the next advertised model.
+    } finally {
+      window.clearTimeout(timer);
+    }
+  }
+
+  throw new Error('Gemini responded, but none of the available text models passed the connection test.');
 }
