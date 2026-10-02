@@ -105,7 +105,7 @@ export async function listGeminiModels(apiKey: string): Promise<GeminiModel[]> {
   } while (pageToken);
 
   return models
-    .map((m) => ({ ...m, name: m.name.replace(/^models\\//, '') }))
+    .map((m) => ({ ...m, name: m.name.replace(/^models\//, '') }))
     .sort((a, b) => {
       const rank = (name: string) => {
         const n = name.toLowerCase();
