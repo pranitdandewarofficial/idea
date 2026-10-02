@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import type { AISettings, AppState, Tone } from '../lib/types';
 import { AIError, chatCompletion } from '../lib/ai';
-import { PROVIDER_PRESETS, getPreset, resolveBaseUrl, resolveModel } from '../lib/providers';
+import { PROVIDER_PRESETS, getPreset, listGeminiModels, resolveBaseUrl, resolveModel } from '../lib/providers';
 import { estimateStorageBytes } from '../lib/store';
 import { ErrorBanner, Field, GhostButton, Icon, SelectWrap, Spinner, inputClass, selectClass } from './ui';
 
@@ -31,13 +31,34 @@ export function SettingsPanel({
   const [testState, setTestState] = useState<'idle' | 'testing' | 'ok' | 'fail'>('idle');
   const [testMsg, setTestMsg] = useState('');
   const [importError, setImportError] = useState<string | null>(null);
+  const [geminiModels, setGeminiModels] = useState<{ name: string; displayName: string }[]>([]);
+  const [modelsState, setModelsState] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
+  const [modelsMsg, setModelsMsg] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
 
   const callParams = () => ({
     baseUrl: resolveBaseUrl(state.settings.providerId, state.settings.customBaseUrl),
     apiKey: state.settings.apiKey.trim(),
     model: resolveModel(state.settings.providerId, state.settings.model),
+    providerId: state.settings.providerId,
   });
+
+  const loadGeminiModels = async () => {
+    setModelsState('loading');
+    setModelsMsg('');
+    try {
+      const models = await listGeminiModels(state.settings.apiKey);
+      setGeminiModels(models);
+      setModelsState('ready');
+      setModelsMsg(models.length ? `${models.length} models available for this key.` : 'No generateContent models available.');
+      if (models.length && (!state.settings.model || !models.some((m) => m.name === state.settings.model))) {
+        onSettings({ model: models[0].name });
+      }
+    } catch (e) {
+      setModelsState('error');
+      setModelsMsg(e instanceof Error ? e.message : String(e));
+    }
+  };
 
   const testConnection = async () => {
     setTestState('testing');
@@ -154,14 +175,24 @@ export function SettingsPanel({
               </button>
             </div>
           </Field>
-          <Field label="Model" hint={`Default: ${preset.defaultModel || '—'}`}>
-            <input
-              className={inputClass}
-              value={state.settings.model}
-              onChange={(e) => onSettings({ model: e.target.value })}
-              placeholder={preset.defaultModel || 'model-name'}
-              autoComplete="off"
-            />
+          <Field label="Model" hint={state.settings.providerId === 'gemini' ? 'Fetched from Google for your API key' : `Default: ${preset.defaultModel || '—'}`}>
+            {state.settings.providerId === 'gemini' ? (
+              <div className="space-y-2">
+                <SelectWrap>
+                  <select value={state.settings.model} onChange={(e) => onSettings({ model: e.target.value })} className={selectClass} disabled={modelsState === 'loading'}>
+                    {!geminiModels.length && <option value="">Fetch available models first</option>}
+                    {geminiModels.map((m) => <option key={m.name} value={m.name}>{m.displayName} · {m.name}</option>)}
+                  </select>
+                </SelectWrap>
+                <GhostButton onClick={loadGeminiModels} disabled={!state.settings.apiKey.trim() || modelsState === 'loading'} className="w-full">
+                  {modelsState === 'loading' ? <Spinner className="w-4 h-4" /> : <Icon name="refresh" className="w-4 h-4" />}
+                  {modelsState === 'loading' ? 'Fetching models…' : 'Fetch available Gemini models'}
+                </GhostButton>
+                {modelsMsg && <p className="text-xs text-muted">{modelsMsg}</p>}
+              </div>
+            ) : (
+              <input className={inputClass} value={state.settings.model} onChange={(e) => onSettings({ model: e.target.value })} placeholder={preset.defaultModel || 'model-name'} autoComplete="off" />
+            )}
           </Field>
           <div>
             <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted">
