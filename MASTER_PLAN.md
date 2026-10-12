@@ -3,7 +3,7 @@
 This is the plan the build followed, and an honest record of what became of each part.
 It is kept next to the code so the reasoning survives the implementation.
 
-**Status: built, running, tested.** Backend 186 tests, frontend 99 tests, production build
+**Status: built, running, tested.** Backend 186 tests, frontend 139 tests, production build
 clean, one full end-to-end run verified against the live HTTP server. See
 [README.md](README.md#what-was-actually-tested) for the evidence and
 [README.md](README.md#known-limitations) for what is still weak.

@@ -3,7 +3,7 @@
  * showed something the backend never said, these tests would not find it here.
  */
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { mockApi, type MockApi } from "../test/fixtures";
 import { compactNumber } from "../lib/format";
@@ -33,14 +33,21 @@ const settingsValues = (settingsFixture as unknown as { values: Settings }).valu
 
 let api: MockApi;
 
-function renderArea(ui: React.ReactElement, route = "/", path = route) {
-  return render(
+async function renderArea(ui: React.ReactElement, route = "/", path = route) {
+  const result = render(
     <MemoryRouter initialEntries={[route]}>
       <Routes>
         <Route path={path} element={ui} />
       </Routes>
     </MemoryRouter>,
   );
+  // Let the first wave of useResource promises land inside act(), so the console
+  // stays quiet and a genuine warning is still visible.
+  await act(async () => {
+    await Promise.resolve();
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  });
+  return result;
 }
 
 /**
@@ -53,7 +60,7 @@ function setText(element: HTMLElement, value: string) {
     : window.HTMLInputElement.prototype;
   const setter = Object.getOwnPropertyDescriptor(proto, "value")?.set;
   setter?.call(element, value);
-  element.dispatchEvent(new Event("input", { bubbles: true }));
+  fireEvent.input(element, { target: { value } });
 }
 
 beforeEach(() => {
@@ -86,7 +93,7 @@ afterEach(() => {
 
 describe("CityArea", () => {
   it("describes the real city state: agents, departments and tasks in flight", async () => {
-    renderArea(<CityArea />);
+    await renderArea(<CityArea />);
     await waitFor(() => {
       expect(screen.getByText(/The city is the state/)).toBeTruthy();
     });
@@ -100,7 +107,7 @@ describe("CityArea", () => {
 
   it("survives a browser with no canvas implementation", async () => {
     // jsdom returns null from getContext; the renderer must not throw
-    renderArea(<CityArea />);
+    await renderArea(<CityArea />);
     await waitFor(() => expect(api.calls.some((call) => call.url.includes("/api/city"))).toBe(true));
     expect(screen.queryByText(/Application error/)).toBeNull();
   });
@@ -110,7 +117,7 @@ describe("CityArea", () => {
 
 describe("CommandCenter", () => {
   it("lists the real plans and shows the selected run's evidence", async () => {
-    renderArea(<CommandCenter />);
+    await renderArea(<CommandCenter />);
     const planFixture = await import("../test/fixtures/plan.json");
     const real = planFixture.default as unknown as { objective: string; state: string };
     await waitFor(() => {
@@ -124,12 +131,12 @@ describe("CommandCenter", () => {
   });
 
   it("posts the objective exactly as typed, with spend left unauthorised", async () => {
-    renderArea(<CommandCenter />);
+    await renderArea(<CommandCenter />);
     const box = screen.getByPlaceholderText(/Build a Python CLI/) as HTMLTextAreaElement;
     setText(box, "Build a CSV to Parquet converter with tests");
     await waitFor(() => expect(box.value).toBe("Build a CSV to Parquet converter with tests"));
 
-    screen.getByText("Submit objective").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Submit objective"));
     await waitFor(() => {
       const post = api.calls.find((call) => call.method === "POST" && call.url.includes("/api/objectives"));
       expect(post).toBeTruthy();
@@ -142,9 +149,9 @@ describe("CommandCenter", () => {
   });
 
   it("refuses a too-short objective without calling the API", async () => {
-    renderArea(<CommandCenter />);
+    await renderArea(<CommandCenter />);
     const before = api.calls.filter((call) => call.url.includes("/api/objectives")).length;
-    screen.getByText("Submit objective").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Submit objective"));
     await waitFor(() => {
       expect(screen.getByText("Describe the objective in at least a sentence.")).toBeTruthy();
     });
@@ -156,7 +163,7 @@ describe("CommandCenter", () => {
 
 describe("AgentDirectory", () => {
   it("renders every agent the backend seeded, grouped by department", async () => {
-    renderArea(<AgentDirectory />, "/agents", "/agents");
+    await renderArea(<AgentDirectory />, "/agents", "/agents");
     const fixture = await import("../test/fixtures/agents.json");
     const rows = (fixture.default as unknown as { items: { name: string; department: string }[] }).items;
     await waitFor(() => {
@@ -168,7 +175,7 @@ describe("AgentDirectory", () => {
   });
 
   it("shows the real tool whitelist when an agent is selected", async () => {
-    renderArea(<AgentDirectory />, "/agents/qa", "/agents/:agentId");
+    await renderArea(<AgentDirectory />, "/agents/qa", "/agents/:agentId");
     const fixture = await import("../test/fixtures/agent-tools.json");
     const policy = fixture.default as unknown as { authorised: { name: string }[]; granted: string[] };
     await waitFor(() => {
@@ -181,7 +188,7 @@ describe("AgentDirectory", () => {
   });
 
   it("marks the decision agent and never offers it as a task owner", async () => {
-    renderArea(<AgentDirectory />, "/agents", "/agents");
+    await renderArea(<AgentDirectory />, "/agents", "/agents");
     await waitFor(() => {
       expect(screen.getAllByText("system 1").length).toBeGreaterThan(0);
     });
@@ -192,7 +199,7 @@ describe("AgentDirectory", () => {
 
 describe("AgentWorkspace", () => {
   it("opens on a real agent and reads its console data", async () => {
-    renderArea(<AgentWorkspace />, "/workspace/qa", "/workspace/:agentId");
+    await renderArea(<AgentWorkspace />, "/workspace/qa", "/workspace/:agentId");
     await waitFor(() => {
       expect(api.calls.some((call) => call.url.includes("/api/agents/qa/tool-calls"))).toBe(true);
     });
@@ -201,9 +208,9 @@ describe("AgentWorkspace", () => {
   });
 
   it("switching tab really queries that endpoint", async () => {
-    renderArea(<AgentWorkspace />, "/workspace/backend", "/workspace/:agentId");
+    await renderArea(<AgentWorkspace />, "/workspace/backend", "/workspace/:agentId");
     await waitFor(() => expect(screen.getByText("Conversation")).toBeTruthy());
-    screen.getByText("Memory").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Memory"));
     await waitFor(() => {
       expect(api.calls.some((call) => call.url.includes("/api/agents/backend/memory"))).toBe(true);
     });
@@ -214,7 +221,7 @@ describe("AgentWorkspace", () => {
 
 describe("TaskManager", () => {
   it("lists the tasks of the captured run with their real evidence", async () => {
-    renderArea(<TaskManager />, "/tasks", "/tasks");
+    await renderArea(<TaskManager />, "/tasks", "/tasks");
     const fixture = await import("../test/fixtures/tasks.json");
     const rows = (fixture.default as unknown as { items: { external_id: string; title: string }[] }).items;
     await waitFor(() => {
@@ -224,9 +231,9 @@ describe("TaskManager", () => {
   });
 
   it("filters by calling the API again with the status parameter", async () => {
-    renderArea(<TaskManager />, "/tasks", "/tasks");
+    await renderArea(<TaskManager />, "/tasks", "/tasks");
     await waitFor(() => expect(screen.getByText("Needs attention")).toBeTruthy());
-    screen.getByText("Needs attention").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Needs attention"));
     await waitFor(() => {
       const filtered = api.calls.filter((call) => call.url.includes("status=failed"));
       expect(filtered.length).toBeGreaterThan(0);
@@ -234,11 +241,11 @@ describe("TaskManager", () => {
   });
 
   it("opens the evidence drawer for a task", async () => {
-    renderArea(<TaskManager />, "/tasks", "/tasks");
+    await renderArea(<TaskManager />, "/tasks", "/tasks");
     const fixture = await import("../test/fixtures/tasks.json");
     const rows = (fixture.default as unknown as { items: { title: string }[] }).items;
     await waitFor(() => expect(screen.getByText(rows[0].title)).toBeTruthy());
-    screen.getByText(rows[0].title).dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText(rows[0].title));
     await waitFor(() => {
       expect(api.calls.some((call) => call.url.includes("/timeline"))).toBe(true);
     });
@@ -249,7 +256,7 @@ describe("TaskManager", () => {
 
 describe("ProjectsArea", () => {
   it("lists the real workspace and its path", async () => {
-    renderArea(<ProjectsArea />, "/projects", "/projects");
+    await renderArea(<ProjectsArea />, "/projects", "/projects");
     const fixture = await import("../test/fixtures/projects.json");
     const rows = (fixture.default as unknown as { items: { name: string; workspace_path: string }[] }).items;
     await waitFor(() => {
@@ -261,7 +268,7 @@ describe("ProjectsArea", () => {
 
 describe("ProjectDetail", () => {
   it("shows the files that are really on disk", async () => {
-    renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
+    await renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
     const fixture = await import("../test/fixtures/tree.json");
     const tree = fixture.default as unknown as { entries: { path: string }[] };
     await waitFor(() => {
@@ -270,21 +277,24 @@ describe("ProjectDetail", () => {
   });
 
   it("does not claim tests passed before anything was executed", async () => {
-    renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
+    await renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
     await waitFor(() => expect(screen.getByText("Tests")).toBeTruthy());
-    screen.getByText("Tests").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Tests"));
     await waitFor(() => {
       expect(screen.getByText("Nothing executed yet")).toBeTruthy();
+    });
+    await act(async () => {
+      await Promise.resolve();
     });
     expect(screen.queryByText(/passed · exit/)).toBeNull();
   });
 
   it("runs the tests for real when asked and shows the exit code", async () => {
-    renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
+    await renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
     await waitFor(() => expect(screen.getByText("Tests")).toBeTruthy());
-    screen.getByText("Tests").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Tests"));
     await waitFor(() => expect(screen.getByText("Run tests")).toBeTruthy());
-    screen.getByText("Run tests").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Run tests"));
 
     const fixture = await import("../test/fixtures/tests.json");
     const result = fixture.default as unknown as { command: string; code: number; passed: boolean };
@@ -296,9 +306,9 @@ describe("ProjectDetail", () => {
   });
 
   it("reports the secret scan result from the backend", async () => {
-    renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
+    await renderArea(<ProjectDetail />, "/projects/p1", "/projects/:projectId");
     await waitFor(() => expect(screen.getByText("Secrets")).toBeTruthy());
-    screen.getByText("Secrets").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Secrets"));
     await waitFor(() => {
       expect(screen.getByText(/No secret pattern matched any file in this workspace/)).toBeTruthy();
     });
@@ -309,7 +319,7 @@ describe("ProjectDetail", () => {
 
 describe("ProvidersArea", () => {
   it("shows the configured provider, its usage and the zero-spend switch", async () => {
-    renderArea(<ProvidersArea />, "/providers", "/providers");
+    await renderArea(<ProvidersArea />, "/providers", "/providers");
     const fixture = await import("../test/fixtures/providers.json");
     const rows = (fixture.default as unknown as { items: { label: string; kind: string }[] }).items;
     await waitFor(() => {
@@ -320,7 +330,7 @@ describe("ProvidersArea", () => {
   });
 
   it("never renders an API key, only the fingerprint", async () => {
-    renderArea(<ProvidersArea />, "/providers", "/providers");
+    await renderArea(<ProvidersArea />, "/providers", "/providers");
     await waitFor(() => expect(screen.getByText(/keys are encrypted with Fernet/i)).toBeTruthy());
     const fixture = await import("../test/fixtures/providers.json");
     const rows = (fixture.default as unknown as {
@@ -334,9 +344,9 @@ describe("ProvidersArea", () => {
   });
 
   it("tests a provider through the real endpoint", async () => {
-    renderArea(<ProvidersArea />, "/providers", "/providers");
+    await renderArea(<ProvidersArea />, "/providers", "/providers");
     await waitFor(() => expect(screen.getAllByText("Test").length).toBeGreaterThan(0));
-    screen.getAllByText("Test")[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getAllByText("Test")[0]);
     await waitFor(() => {
       expect(api.calls.some((call) => call.method === "POST" && call.url.includes("/test"))).toBe(true);
     });
@@ -354,7 +364,7 @@ describe("ProvidersArea", () => {
 
 describe("KnowledgeArea", () => {
   it("shows the indexed source and its real chunk count", async () => {
-    renderArea(<KnowledgeArea />, "/knowledge", "/knowledge");
+    await renderArea(<KnowledgeArea />, "/knowledge", "/knowledge");
     const fixture = await import("../test/fixtures/knowledge-upload.json");
     const source = fixture.default as unknown as { name: string; chunk_count: number };
     await waitFor(() => {
@@ -364,10 +374,10 @@ describe("KnowledgeArea", () => {
   });
 
   it("returns BM25 hits from the backend when searching", async () => {
-    renderArea(<KnowledgeArea />, "/knowledge", "/knowledge");
+    await renderArea(<KnowledgeArea />, "/knowledge", "/knowledge");
     const box = screen.getByLabelText("Search knowledge") as HTMLInputElement;
     setText(box, "error envelope status codes");
-    box.closest("form")?.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+    fireEvent.submit(box.closest("form") as HTMLFormElement);
 
     const fixture = await import("../test/fixtures/knowledge-search.json");
     const result = fixture.default as unknown as { results: { source_name: string; score: number }[] };
@@ -379,7 +389,7 @@ describe("KnowledgeArea", () => {
   });
 
   it("is honest that retrieval is lexical, not semantic", async () => {
-    renderArea(<KnowledgeArea />, "/knowledge", "/knowledge");
+    await renderArea(<KnowledgeArea />, "/knowledge", "/knowledge");
     await waitFor(() => {
       expect(screen.getByText(/no embedding model - lexical search/)).toBeTruthy();
     });
@@ -390,9 +400,9 @@ describe("KnowledgeArea", () => {
 
 describe("ActivityCenter", () => {
   it("shows the System 1 / System 2 split with the real engine and gates", async () => {
-    renderArea(<ActivityCenter />, "/activity", "/activity");
+    await renderArea(<ActivityCenter />, "/activity", "/activity");
     await waitFor(() => expect(screen.getByText("Decision log")).toBeTruthy());
-    screen.getByText("Decision log").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Decision log"));
 
     const fixture = await import("../test/fixtures/decision-status.json");
     const status = fixture.default as unknown as {
@@ -411,8 +421,8 @@ describe("ActivityCenter", () => {
   });
 
   it("records the escalation rate honestly", async () => {
-    renderArea(<ActivityCenter />, "/activity", "/activity");
-    screen.getByText("Decision log").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await renderArea(<ActivityCenter />, "/activity", "/activity");
+    fireEvent.click(screen.getByText("Decision log"));
     const fixture = await import("../test/fixtures/decision-status.json");
     const stats = (fixture.default as unknown as { stats: { escalation_rate: number } }).stats;
     await waitFor(() => {
@@ -422,10 +432,10 @@ describe("ActivityCenter", () => {
   });
 
   it("probes the router through the real endpoint", async () => {
-    renderArea(<ActivityCenter />, "/activity", "/activity");
-    screen.getByText("Decision log").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await renderArea(<ActivityCenter />, "/activity", "/activity");
+    fireEvent.click(screen.getByText("Decision log"));
     await waitFor(() => expect(screen.getByText("Run probe")).toBeTruthy());
-    screen.getByText("Run probe").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Run probe"));
 
     const fixture = await import("../test/fixtures/probe-routing.json");
     const probe = fixture.default as unknown as { engine: string; action: string; confidence: number };
@@ -438,8 +448,8 @@ describe("ActivityCenter", () => {
   });
 
   it("lists audit rows with actors and results", async () => {
-    renderArea(<ActivityCenter />, "/activity", "/activity");
-    screen.getByText("Audit trail").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await renderArea(<ActivityCenter />, "/activity", "/activity");
+    fireEvent.click(screen.getByText("Audit trail"));
     const fixture = await import("../test/fixtures/audit.json");
     const rows = (fixture.default as unknown as { items: { action: string; actor: string }[] }).items;
     await waitFor(() => {
@@ -453,7 +463,7 @@ describe("ActivityCenter", () => {
 
 describe("SettingsArea", () => {
   it("renders the readiness checklist from the real setup status", async () => {
-    renderArea(<SettingsArea />, "/settings", "/settings");
+    await renderArea(<SettingsArea />, "/settings", "/settings");
     await waitFor(() => {
       expect(screen.getByText("Readiness")).toBeTruthy();
       expect(screen.getByText("Backend reachable")).toBeTruthy();
@@ -465,7 +475,7 @@ describe("SettingsArea", () => {
   });
 
   it("shows the token budgets the backend is enforcing", async () => {
-    renderArea(<SettingsArea />, "/settings", "/settings");
+    await renderArea(<SettingsArea />, "/settings", "/settings");
     const fixture = await import("../test/fixtures/settings-budget.json");
     const budget = fixture.default as unknown as { global_token_budget: number; plan_token_budget: number };
     await waitFor(() => {
@@ -475,7 +485,7 @@ describe("SettingsArea", () => {
   });
 
   it("saves only the settings the founder actually changed", async () => {
-    renderArea(<SettingsArea />, "/settings", "/settings");
+    await renderArea(<SettingsArea />, "/settings", "/settings");
     await waitFor(() => expect(screen.getByText("No unsaved change.")).toBeTruthy());
 
     const save = screen.getByText("Save settings");
@@ -486,7 +496,7 @@ describe("SettingsArea", () => {
     await waitFor(() => {
       expect((screen.getByText("Save settings").closest("button") as HTMLButtonElement).disabled).toBe(false);
     });
-    screen.getByText("Save settings").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(screen.getByText("Save settings"));
     await waitFor(() => {
       const patch = api.calls.find((call) => call.method === "PATCH" && call.url.endsWith("/api/settings"));
       expect(patch?.body).toEqual({ max_repairs: 5 });
@@ -494,7 +504,7 @@ describe("SettingsArea", () => {
   });
 
   it("shows the decision gate value from the backend defaults", async () => {
-    renderArea(<SettingsArea />, "/settings", "/settings");
+    await renderArea(<SettingsArea />, "/settings", "/settings");
     await waitFor(() => {
       expect(screen.getByDisplayValue(String(settingsValues.decision_confidence_threshold))).toBeTruthy();
     });

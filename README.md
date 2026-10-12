@@ -51,7 +51,7 @@ walk between them, and a task in flight is a marker on the roof of whoever owns 
 | Execution | Real filesystem, shell, git, test-runner and dev-server tools, workspace-scoped and policy-checked |
 | Decisions | Pluggable System-1 layer (Laya when available, deterministic local engine otherwise) with calibrated confidence gates |
 | Safety | Zero-spend by default, Fernet-encrypted keys, approval gates, append-only audit trail, secret redaction |
-| Tests | **186 backend tests** (pytest) and **99 frontend tests** (vitest), all passing |
+| Tests | **186 backend tests** (pytest) and **139 frontend tests** (vitest), all passing |
 
 Nothing is a SaaS. There is no account, no telemetry, no cloud dependency. The API binds
 to `127.0.0.1` and the browser only ever talks to the dev server, which proxies `/api`
@@ -421,7 +421,7 @@ Soft ratings (`quality_score`, `risk_score`, `relevance_score`) are marked
 | Concern | What is implemented |
 | --- | --- |
 | **Authentication** | Bearer token on every `/api` route. Only `/api/health` and `/api/setup/status` are open, and the latter exists for local first-run bootstrap. Token generated with `secrets.token_urlsafe(32)`, stored `0600`. |
-| **Network exposure** | API binds `127.0.0.1`. CORS allows only localhost dev origins. The browser uses relative URLs; the dev server proxies. Nothing is published. |
+| **Network exposure** | API binds `127.0.0.1`. CORS allows only localhost dev origins. The browser uses relative URLs; the dev server proxies. Nothing is published, and `index.html` loads no third-party asset (no CDN font, no analytics) — the only outbound requests are the ones you configure yourself. |
 | **Secrets at rest** | Provider keys encrypted with Fernet before SQLite. `PRANIT_SECRET_KEY` auto-generated into `.data/secret_key` (`0600`). |
 | **Secrets in transit / logs** | `security/redact.py` strips key-shaped values from logs, audit context and error payloads; matches are replaced with `[REDACTED]`. The API never returns a key, only `has_key` + fingerprint. |
 | **Zero spend** | Enforced in the provider registry, not the UI: a paid provider raises `SpendBlockedError` unless that specific run was authorised. On by default. |
@@ -519,7 +519,7 @@ Current status on the machine where this was written:
 | Suite | Result | Time |
 | --- | --- | --- |
 | `backend/tests/` (pytest, 8 files) | **186 passed** | ~8.3 s |
-| `frontend/src/**/*.test.ts(x)` (vitest, 7 files) | **99 passed** | ~7 s |
+| `frontend/src/**/*.test.ts(x)` (vitest, 10 files) | **139 passed** | ~11 s |
 | `tsc -b --noEmit` | clean, 0 errors | — |
 | `vite build` | 485 kB JS (141 kB gzip), 30 kB CSS | ~5 s |
 
@@ -595,7 +595,12 @@ Everything below was executed, not asserted by inspection.
 - [x] Event history, kinds, export, priority triage
 - [x] WebSocket: auth, `ping`/`pong`, `replay since`, malformed frame → `ws.error`, thread-safe emit
 
-**Frontend (99 tests)**
+**Frontend (139 tests)**
+- [x] App boot: renders nothing until the backend answers, adopts the local token, starts the live stream only after a successful boot, serves deep links, redirects unknown routes
+- [x] Boot failure: shows the real reason (network error or the backend's own envelope), the exact uvicorn command, a working Retry, and manual token entry
+- [x] Live transport: WebSocket first (token + `since` cursor), `live` only once open, ping keepalive, event delivery to subscribers and store, malformed frames and `ws.pong` ignored, reconnect on close with a distinct "invalid token" reason
+- [x] Transport fallback: SSE only after three real WebSocket failures, polling only after both push transports failed, cursor advances, offline reported when polling fails, and `stop()` really clears the poll timer
+- [x] City renderer: driven by the captured payload, draws every building/road/agent at reported positions, task markers on the owning building, blocked buildings in amber with a `BLOCKED` chip, failed markers in red, fewer labels in compact mode, no dependence on the animation clock under reduced motion, empty city tolerated
 - [x] City camera maths: fit, clamp, zoom-at-cursor invariance, focus, hit-testing, districts, frame-rate-independent easing
 - [x] Formatting: time, duration, bytes, compact numbers, money, tones, grouping
 - [x] HTTP client: bearer header, no header when anonymous, error envelope → `ApiError`, non-JSON body, query serialisation, JSON vs FormData, token never in localStorage or a cookie

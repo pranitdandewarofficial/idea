@@ -3,7 +3,7 @@
  * approval drawer lists what GET /api/approvals actually returned.
  */
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Shell } from "./Shell";
 import { setToken } from "../api/client";
@@ -16,12 +16,17 @@ import settingsFixture from "../test/fixtures/settings.json";
 const health = healthFixture as unknown as Health;
 const settings = (settingsFixture as unknown as { values: Settings }).values;
 
-function renderShell(route = "/") {
-  return render(
+async function renderShell(route = "/") {
+  const result = render(
     <MemoryRouter initialEntries={[route]}>
       <Shell />
     </MemoryRouter>,
   );
+  await act(async () => {
+    await Promise.resolve();
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  });
+  return result;
 }
 
 describe("<Shell />", () => {
@@ -44,8 +49,8 @@ describe("<Shell />", () => {
     });
   });
 
-  it("offers exactly the ten areas from the brief", () => {
-    renderShell("/");
+  it("offers exactly the ten areas from the brief", async () => {
+    await renderShell("/");
     const nav = screen.getByRole("navigation", { name: "Areas" });
     const labels = [...nav.querySelectorAll("a")].map((link) => link.textContent?.trim());
     expect(labels).toEqual([
@@ -54,24 +59,24 @@ describe("<Shell />", () => {
     ]);
   });
 
-  it("reports the real backend version and sandbox tier", () => {
-    renderShell("/");
+  it("reports the real backend version and sandbox tier", async () => {
+    await renderShell("/");
     expect(screen.getByText(`v${health.version} · py ${health.python}`)).toBeTruthy();
     expect(screen.getByText(`sandbox tier ${health.sandbox_tier}`)).toBeTruthy();
   });
 
-  it("shows zero-spend state from the settings the backend returned", () => {
-    renderShell("/");
+  it("shows zero-spend state from the settings the backend returned", async () => {
+    await renderShell("/");
     expect(screen.getByText(settings.zero_spend ? "zero spend on" : "spend allowed")).toBeTruthy();
   });
 
-  it("shows which engine is answering System-1 decisions", () => {
-    renderShell("/");
+  it("shows which engine is answering System-1 decisions", async () => {
+    await renderShell("/");
     expect(screen.getByText(new RegExp(`system 1: ${health.decision_engine}`))).toBeTruthy();
   });
 
-  it("marks the active area", () => {
-    renderShell("/providers");
+  it("marks the active area", async () => {
+    await renderShell("/providers");
     const active = screen.getByRole("navigation", { name: "Areas" })
       .querySelector('a[aria-current="page"]');
     expect(active?.textContent?.trim()).toBe("AI Providers");
@@ -94,8 +99,8 @@ describe("<Shell />", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
 
-    renderShell("/");
-    screen.getByRole("button", { name: /Approvals/ }).dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await renderShell("/");
+    fireEvent.click(screen.getByRole("button", { name: /Approvals/ }));
 
     await waitFor(() => {
       expect(screen.getByText("run_shell: git push origin main")).toBeTruthy();
@@ -106,7 +111,7 @@ describe("<Shell />", () => {
 
     // deciding really posts to the endpoint
     const approve = screen.getByRole("button", { name: /Approve/ });
-    approve.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    fireEvent.click(approve);
     await waitFor(() => {
       const called = fetchMock.mock.calls.some(([url]) => String(url).includes("/api/approvals/ap-1/decision"));
       expect(called).toBe(true);
@@ -118,8 +123,8 @@ describe("<Shell />", () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ items: [] }), {
       status: 200, headers: { "content-type": "application/json" },
     })));
-    renderShell("/");
-    screen.getByRole("button", { name: /Approvals/ }).dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await renderShell("/");
+    fireEvent.click(screen.getByRole("button", { name: /Approvals/ }));
     await waitFor(() => {
       expect(screen.getByText("Nothing waiting")).toBeTruthy();
     });
@@ -130,8 +135,8 @@ describe("<Shell />", () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({
       error: { code: "unauthorized", message: "A valid access token is required.", context: {}, request_id: "r1" },
     }), { status: 401, headers: { "content-type": "application/json" } })));
-    renderShell("/");
-    screen.getByRole("button", { name: /Approvals/ }).dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await renderShell("/");
+    fireEvent.click(screen.getByRole("button", { name: /Approvals/ }));
     await waitFor(() => {
       expect(screen.getByText("A valid access token is required.")).toBeTruthy();
     });
@@ -139,7 +144,7 @@ describe("<Shell />", () => {
   });
 
   it("renders toasts pushed by the live stream", async () => {
-    renderShell("/");
+    await renderShell("/");
     useApp.getState().pushToast({ title: "task.failed", body: "t3 · pytest exited 1", tone: "danger" });
     await waitFor(() => {
       expect(screen.getByText("task.failed")).toBeTruthy();
