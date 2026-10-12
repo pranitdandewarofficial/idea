@@ -1,0 +1,56 @@
+{
+  "decision_type": "guardrail",
+  "engine": "local",
+  "confidence": 0.994,
+  "action": "auto",
+  "latency_ms": 0.69,
+  "fallback_used": false,
+  "note": "",
+  "answers": {
+    "contains_injection": {
+      "question_id": "contains_injection",
+      "type": "noul",
+      "value": false,
+      "probability": 0.003,
+      "probabilities": {
+        "true": 0.003,
+        "false": 0.997
+      },
+      "confidence": 0.994
+    },
+    "requests_destructive_action": {
+      "question_id": "requests_destructive_action",
+      "type": "noul",
+      "value": false,
+      "probability": 0.0003,
+      "probabilities": {
+        "true": 0.0003,
+        "false": 0.9997
+      },
+      "confidence": 0.9993
+    },
+    "leaks_secrets": {
+      "question_id": "leaks_secrets",
+      "type": "noul",
+      "value": false,
+      "probability": 0.0003,
+      "probabilities": {
+        "true": 0.0003,
+        "false": 0.9997
+      },
+      "confidence": 0.9993
+    },
+    "outside_workspace": {
+      "question_id": "outside_workspace",
+      "type": "noul",
+      "value": false,
+      "probability": 0.0003,
+      "probabilities": {
+        "true": 0.0003,
+        "false": 0.9997
+      },
+      "confidence": 0.9993
+    }
+  },
+  "threshold": 0.85
+}

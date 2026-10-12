@@ -1,0 +1,131 @@
+{
+  "agent_id": "qa",
+  "authorised": [
+    {
+      "name": "create_dir",
+      "description": "Create a directory inside the workspace.",
+      "category": "filesystem:write",
+      "gated": false,
+      "risk": 0.1,
+      "params": [
+        "path"
+      ]
+    },
+    {
+      "name": "edit_file",
+      "description": "Replace the first occurrence of old_text with new_text (whitespace tolerant).",
+      "category": "filesystem:write",
+      "gated": false,
+      "risk": 0.25,
+      "params": [
+        "new_text",
+        "old_text",
+        "path"
+      ]
+    },
+    {
+      "name": "list_dir",
+      "description": "List the entries of a workspace directory.",
+      "category": "filesystem:read",
+      "gated": false,
+      "risk": 0.02,
+      "params": [
+        "path"
+      ]
+    },
+    {
+      "name": "read_file",
+      "description": "Read a text file from the project workspace.",
+      "category": "filesystem:read",
+      "gated": false,
+      "risk": 0.02,
+      "params": [
+        "path"
+      ]
+    },
+    {
+      "name": "run_lint",
+      "description": "Run the available linter over the workspace.",
+      "category": "execution",
+      "gated": false,
+      "risk": 0.3,
+      "params": []
+    },
+    {
+      "name": "run_shell",
+      "description": "Run one allowlisted command in the workspace sandbox. Pipes are not permitted.",
+      "category": "execution",
+      "gated": true,
+      "risk": 0.5,
+      "params": [
+        "command",
+        "timeout"
+      ]
+    },
+    {
+      "name": "run_tests",
+      "description": "Detect and run the project's test suite; returns real stdout/stderr and exit code.",
+      "category": "execution",
+      "gated": false,
+      "risk": 0.3,
+      "params": [
+        "command"
+      ]
+    },
+    {
+      "name": "run_typecheck",
+      "description": "Run the available type checker.",
+      "category": "execution",
+      "gated": false,
+      "risk": 0.3,
+      "params": []
+    },
+    {
+      "name": "search_in_workspace",
+      "description": "Grep for a literal string across workspace files.",
+      "category": "filesystem:read",
+      "gated": false,
+      "risk": 0.05,
+      "params": [
+        "glob",
+        "query"
+      ]
+    },
+    {
+      "name": "workspace_tree",
+      "description": "Recursive file listing of the workspace.",
+      "category": "filesystem:read",
+      "gated": false,
+      "risk": 0.02,
+      "params": [
+        "path"
+      ]
+    },
+    {
+      "name": "write_file",
+      "description": "Create or overwrite a file in the project workspace. Parent directories are created.",
+      "category": "filesystem:write",
+      "gated": false,
+      "risk": 0.2,
+      "params": [
+        "content",
+        "path"
+      ]
+    }
+  ],
+  "granted": [
+    "create_dir",
+    "edit_file",
+    "list_dir",
+    "read_file",
+    "run_lint",
+    "run_shell",
+    "run_tests",
+    "run_typecheck",
+    "search_in_workspace",
+    "workspace_tree",
+    "write_file"
+  ],
+  "revoked": [],
+  "catalogue_size": 23
+}

@@ -1,0 +1,27 @@
+{
+  "items": [
+    "agent.status_changed",
+    "checkpoint.saved",
+    "decision.fallback",
+    "decision.low_confidence",
+    "decision.made",
+    "decision.routing.confirmed",
+    "decision.routing.override",
+    "knowledge.indexed",
+    "knowledge.reindexed",
+    "objective.received",
+    "plan.created",
+    "plan.finished",
+    "plan.integrating",
+    "plan.started",
+    "plan.state_changed",
+    "plan.thinking",
+    "plan.validated",
+    "plan.verifying",
+    "provider.test_succeeded",
+    "settings.changed",
+    "task.completed",
+    "task.started",
+    "tool.result"
+  ]
+}

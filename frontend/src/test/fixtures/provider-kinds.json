@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "kind": "anthropic",
+      "default_base_url": "https://api.anthropic.com",
+      "requires_key": true,
+      "is_paid_by_default": true
+    },
+    {
+      "kind": "gemini",
+      "default_base_url": "https://generativelanguage.googleapis.com",
+      "requires_key": true,
+      "is_paid_by_default": true
+    },
+    {
+      "kind": "google",
+      "default_base_url": "https://generativelanguage.googleapis.com",
+      "requires_key": true,
+      "is_paid_by_default": true
+    },
+    {
+      "kind": "lmstudio",
+      "default_base_url": "",
+      "requires_key": true,
+      "is_paid_by_default": false
+    },
+    {
+      "kind": "mock",
+      "default_base_url": "mock://local",
+      "requires_key": false,
+      "is_paid_by_default": false
+    },
+    {
+      "kind": "ollama",
+      "default_base_url": "http://127.0.0.1:11434",
+      "requires_key": false,
+      "is_paid_by_default": false
+    },
+    {
+      "kind": "openai",
+      "default_base_url": "https://api.openai.com/v1",
+      "requires_key": true,
+      "is_paid_by_default": true
+    },
+    {
+      "kind": "openai_compatible",
+      "default_base_url": "http://127.0.0.1:8080/v1",
+      "requires_key": true,
+      "is_paid_by_default": true
+    },
+    {
+      "kind": "openrouter",
+      "default_base_url": "https://openrouter.ai/api/v1",
+      "requires_key": true,
+      "is_paid_by_default": true
+    },
+    {
+      "kind": "vllm",
+      "default_base_url": "",
+      "requires_key": true,
+      "is_paid_by_default": false
+    }
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "items": [
+    {
+      "id": 85,
+      "kind": "decision.routing.confirmed",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+        "agent_id": "devops",
+        "suggestion": "devops",
+        "confidence": 0.4307,
+        "action": "escalate",
+        "engine": "llm",
+        "fallback_used": true,
+        "latency_ms": 22.78
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:30.983481"
+    },
+    {
+      "id": 87,
+      "kind": "task.started",
+      "payload": {
+        "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "agent_id": "devops",
+        "title": "Provide reproducible run instructions",
+        "external_id": "t7"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:30.989865"
+    },
+    {
+      "id": 90,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "guardrail",
+        "engine": "local",
+        "confidence": 0.9993,
+        "action": "auto",
+        "latency_ms": 0.56,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "00b5859960944b939a43cdf5b635f644",
+        "answers": {
+          "contains_injection": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "requests_destructive_action": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "leaks_secrets": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "outside_workspace": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          }
+        },
+        "state_hash": "4fa1b2cd1f92"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.002660"
+    },
+    {
+      "id": 91,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "guardrail",
+        "engine": "local",
+        "confidence": 0.9993,
+        "action": "auto",
+        "latency_ms": 0.72,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+        "answers": {
+          "contains_injection": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "requests_destructive_action": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "leaks_secrets": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "outside_workspace": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          }
+        },
+        "state_hash": "1931029123ce"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.011710"
+    },
+    {
+      "id": 92,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "routing",
+        "engine": "llm",
+        "confidence": 0.2703,
+        "action": "escalate",
+        "latency_ms": 34.57,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "db093632454c4536b76ba3336d7af7d2",
+        "answers": {
+          "assigned_agent": {
+            "value": "docs",
+            "confidence": 0.2703,
+            "probability": 0.1777
+          }
+        },
+        "state_hash": "1b7917df245f"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.022444"
+    },
+    {
+      "id": 93,
+      "kind": "decision.low_confidence",
+      "payload": {
+        "decision_type": "routing",
+        "confidence": 0.2703,
+        "threshold": 0.85,
+        "fallback_used": true,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "db093632454c4536b76ba3336d7af7d2"
+      },
+      "priority": "high",
+      "ts": "2026-10-12T08:43:31.023723"
+    },
+    {
+      "id": 94,
+      "kind": "decision.fallback",
+      "payload": {
+        "decision_type": "routing",
+        "engine": "llm",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "db093632454c4536b76ba3336d7af7d2"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.024132"
+    },
+    {
+      "id": 95,
+      "kind": "decision.routing.confirmed",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "db093632454c4536b76ba3336d7af7d2",
+        "agent_id": "docs",
+        "suggestion": "docs",
+        "confidence": 0.2703,
+        "action": "escalate",
+        "engine": "llm",
+        "fallback_used": true,
+        "latency_ms": 34.57
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.024591"
+    },
+    {
+      "id": 97,
+      "kind": "task.started",
+      "payload": {
+        "task_id": "db093632454c4536b76ba3336d7af7d2",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "agent_id": "docs",
+        "title": "Write the README",
+        "external_id": "t8"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.040195"
+    },
+    {
+      "id": 99,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "guardrail",
+        "engine": "local",
+        "confidence": 0.9993,
+        "action": "auto",
+        "latency_ms": 0.72,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "db093632454c4536b76ba3336d7af7d2",
+        "answers": {
+          "contains_injection": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "requests_destructive_action": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "leaks_secrets": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "outside_workspace": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          }
+        },
+        "state_hash": "0a0387f77cc5"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.052750"
+    },
+    {
+      "id": 102,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "guardrail",
+        "engine": "local",
+        "confidence": 0.9993,
+        "action": "auto",
+        "latency_ms": 0.6,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "db093632454c4536b76ba3336d7af7d2",
+        "answers": {
+          "contains_injection": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "requests_destructive_action": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "leaks_secrets": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "outside_workspace": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          }
+        },
+        "state_hash": "4fa1b2cd1f92"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.061225"
+    },
+    {
+      "id": 104,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "guardrail",
+        "engine": "local",
+        "confidence": 0.9993,
+        "action": "auto",
+        "latency_ms": 0.53,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+        "answers": {
+          "contains_injection": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "requests_destructive_action": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "leaks_secrets": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "outside_workspace": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          }
+        },
+        "state_hash": "4fa1b2cd1f92"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.082082"
+    },
+    {
+      "id": 105,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "output_quality",
+        "engine": "local",
+        "confidence": 0.273,
+        "action": "auto",
+        "latency_ms": 0.61,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+        "answers": {
+          "meets_criteria": {
+            "value": true,
+            "confidence": 0.8476,
+            "probability": 0.9238
+          },
+          "quality_score": {
+            "value": "acceptable",
+            "confidence": 0.273,
+            "probability": 0.62
+          },
+          "hallucination_risk": {
+            "value": false,
+            "confidence": 0.9468,
+            "probability": 0.0266
+          }
+        },
+        "state_hash": "6676668c4c57"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.088927"
+    },
+    {
+      "id": 107,
+      "kind": "task.completed",
+      "payload": {
+        "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "agent_id": "devops",
+        "external_id": "t7",
+        "title": "Provide reproducible run instructions",
+        "files_changed": [
+          "env.example",
+          "requirements.txt",
+          "scripts/run.sh"
+        ],
+        "verification": {
+          "verified": null,
+          "checks": [],
+          "reason": "This task declared no verify_commands, so no automated evidence was collected. Acceptance rests on the output contract check."
+        },
+        "quality": {
+          "meets_criteria": true,
+          "quality": "acceptable",
+          "confidence": 0.273,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "tokens": 1195,
+        "mocked": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      "priority": "normal",
+      "ts": "2026-10-12T08:43:31.091959"
+    },
+    {
+      "id": 108,
+      "kind": "checkpoint.saved",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "checkpoint_id": "d51f453f1e744d419ab6fecc0c1f8169",
+        "sequence": 5,
+        "reason": "task:54e49a04a6e24c218ec1f1d3c6b4e5a4"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.095137"
+    },
+    {
+      "id": 109,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "output_quality",
+        "engine": "local",
+        "confidence": 0.4632,
+        "action": "auto",
+        "latency_ms": 0.58,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "00b5859960944b939a43cdf5b635f644",
+        "answers": {
+          "meets_criteria": {
+            "value": true,
+            "confidence": 0.9947,
+            "probability": 0.9973
+          },
+          "quality_score": {
+            "value": "good",
+            "confidence": 0.4632,
+            "probability": 0.6935
+          },
+          "hallucination_risk": {
+            "value": false,
+            "confidence": 0.9468,
+            "probability": 0.0266
+          }
+        },
+        "state_hash": "c0efe6a36a21"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.101873"
+    },
+    {
+      "id": 111,
+      "kind": "task.completed",
+      "payload": {
+        "task_id": "00b5859960944b939a43cdf5b635f644",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "agent_id": "security",
+        "external_id": "t6",
+        "title": "Security review of the delivered code",
+        "files_changed": [
+          "docs/security-review.md"
+        ],
+        "verification": {
+          "verified": true,
+          "checks": [
+            {
+              "command": "ls docs/security-review.md",
+              "code": 0,
+              "passed": true,
+              "stdout": "docs/security-review.md\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 71.83
+            }
+          ],
+          "reason": ""
+        },
+        "quality": {
+          "meets_criteria": true,
+          "quality": "good",
+          "confidence": 0.4632,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "tokens": 1076,
+        "mocked": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      "priority": "normal",
+      "ts": "2026-10-12T08:43:31.104515"
+    },
+    {
+      "id": 112,
+      "kind": "checkpoint.saved",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "checkpoint_id": "fb2bfbbeddc84f63b23f220060e29465",
+        "sequence": 6,
+        "reason": "task:00b5859960944b939a43cdf5b635f644"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.107355"
+    },
+    {
+      "id": 113,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "output_quality",
+        "engine": "local",
+        "confidence": 0.4632,
+        "action": "auto",
+        "latency_ms": 0.6,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "db093632454c4536b76ba3336d7af7d2",
+        "answers": {
+          "meets_criteria": {
+            "value": true,
+            "confidence": 0.9949,
+            "probability": 0.9975
+          },
+          "quality_score": {
+            "value": "good",
+            "confidence": 0.4632,
+            "probability": 0.6935
+          },
+          "hallucination_risk": {
+            "value": false,
+            "confidence": 0.9468,
+            "probability": 0.0266
+          }
+        },
+        "state_hash": "8551df8afdfc"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.114206"
+    },
+    {
+      "id": 115,
+      "kind": "task.completed",
+      "payload": {
+        "task_id": "db093632454c4536b76ba3336d7af7d2",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "agent_id": "docs",
+        "external_id": "t8",
+        "title": "Write the README",
+        "files_changed": [
+          "README.md"
+        ],
+        "verification": {
+          "verified": true,
+          "checks": [
+            {
+              "command": "ls README.md",
+              "code": 0,
+              "passed": true,
+              "stdout": "README.md\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 45.56
+            }
+          ],
+          "reason": ""
+        },
+        "quality": {
+          "meets_criteria": true,
+          "quality": "good",
+          "confidence": 0.4632,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "tokens": 1064,
+        "mocked": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      "priority": "normal",
+      "ts": "2026-10-12T08:43:31.116776"
+    },
+    {
+      "id": 116,
+      "kind": "checkpoint.saved",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "checkpoint_id": "cafb94abcac74ceca9c7e5aab4829a45",
+        "sequence": 7,
+        "reason": "task:db093632454c4536b76ba3336d7af7d2"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.119150"
+    },
+    {
+      "id": 118,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "guardrail",
+        "engine": "local",
+        "confidence": 0.9951,
+        "action": "auto",
+        "latency_ms": 0.58,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "efe1449d508d4c3cb5e6077a0722b98d",
+        "answers": {
+          "contains_injection": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "requests_destructive_action": {
+            "value": false,
+            "confidence": 0.9951,
+            "probability": 0.0025
+          },
+          "leaks_secrets": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "outside_workspace": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          }
+        },
+        "state_hash": "ab9011ff81e1"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.322361"
+    },
+    {
+      "id": 119,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "output_quality",
+        "engine": "local",
+        "confidence": 0.8968,
+        "action": "auto",
+        "latency_ms": 1.76,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "efe1449d508d4c3cb5e6077a0722b98d",
+        "answers": {
+          "meets_criteria": {
+            "value": true,
+            "confidence": 0.9999,
+            "probability": 1.0
+          },
+          "quality_score": {
+            "value": "excellent",
+            "confidence": 0.8968,
+            "probability": 0.9626
+          },
+          "hallucination_risk": {
+            "value": false,
+            "confidence": 0.9468,
+            "probability": 0.0266
+          }
+        },
+        "state_hash": "cf70f63dd377"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.664986"
+    },
+    {
+      "id": 121,
+      "kind": "task.completed",
+      "payload": {
+        "task_id": "efe1449d508d4c3cb5e6077a0722b98d",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "agent_id": "qa",
+        "external_id": "t5",
+        "title": "Write and run the test suite",
+        "files_changed": [
+          "tests/test_app.py"
+        ],
+        "verification": {
+          "verified": true,
+          "checks": [
+            {
+              "command": "python -m pytest -q",
+              "code": 0,
+              "passed": true,
+              "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 331.39
+            }
+          ],
+          "reason": ""
+        },
+        "quality": {
+          "meets_criteria": true,
+          "quality": "excellent",
+          "confidence": 0.8968,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "tokens": 1499,
+        "mocked": true,
+        "summary": "assigned work\npassed: false\nExecuted `python -m pytest -q` inside the project workspace with the run_shell tool.\nraw_output:\n```\n- write_file [ok]: {\"path\": \"tests/test_app.py\", \"bytes\": 350, \"created\": true, \"previous_bytes\": null, \"_hash_before\": \"cf9ae8bfaf592ea7\", \"_hash_after\": \"e0ade134addcd6bf\"}\n- run_shell [ok]: {\"code\": 0, \"stdout\": \"..                                                                       [100%]\\n2 passed in 0.01s\\n\", \"stderr\": \"\", \"duration_ms\": 302.5, \"timed_out\": false, \"command\": \"/home/user/idea/backend/.venv/bin/python -m pytest -q\", \"truncated\": false, \"sandbox"
+      },
+      "priority": "normal",
+      "ts": "2026-10-12T08:43:31.669973"
+    },
+    {
+      "id": 122,
+      "kind": "checkpoint.saved",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "checkpoint_id": "09ab1b98a6e743bb951c47801a6001e9",
+        "sequence": 8,
+        "reason": "task:efe1449d508d4c3cb5e6077a0722b98d"
+      },
+      "priority": "low",
+      "ts": "2026-10-12T08:43:31.674094"
+    }
+  ],
+  "count": 25,
+  "_note": "real captured payload, list shortened to the first 25 items"
+}

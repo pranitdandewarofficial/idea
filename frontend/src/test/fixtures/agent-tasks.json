@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "id": "e187cd66863b4607aa73deef83ace6b7",
+      "external_id": "t5",
+      "title": "Write and run the test suite",
+      "status": "completed",
+      "plan_id": "de5a12776f5f48f5b07e182fd840e061",
+      "project_id": "ea0aec2b07824c519548b1313a17c772",
+      "retries": 0,
+      "error": null,
+      "files_changed": [
+        "tests/test_app.py"
+      ],
+      "created_at": "2026-10-12T08:47:37.760106"
+    }
+  ]
+}

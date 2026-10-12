@@ -1,0 +1,80 @@
+{
+  "values": {
+    "zero_spend": true,
+    "max_concurrency": 4,
+    "task_timeout_seconds": 600,
+    "shell_timeout_seconds": 120,
+    "max_repairs": 2,
+    "sandbox_tier": 1,
+    "decision_confidence_threshold": 0.85,
+    "decision_mode": "auto",
+    "decisions_enabled": true,
+    "guardrail_sensitivity": "medium",
+    "auto_approve_low_risk": true,
+    "compact_mode": false,
+    "default_provider_id": "e92288a9c89c42fd961eae1f8151f447",
+    "fallback_provider_id": "",
+    "plan_token_budget": 400000,
+    "global_token_budget": 2000000
+  },
+  "defaults": {
+    "zero_spend": true,
+    "max_concurrency": 4,
+    "task_timeout_seconds": 600,
+    "shell_timeout_seconds": 120,
+    "max_repairs": 2,
+    "sandbox_tier": 1,
+    "decision_confidence_threshold": 0.85,
+    "decision_mode": "auto",
+    "decisions_enabled": true,
+    "guardrail_sensitivity": "medium",
+    "auto_approve_low_risk": true,
+    "compact_mode": false,
+    "default_provider_id": "",
+    "fallback_provider_id": "",
+    "plan_token_budget": 400000,
+    "global_token_budget": 2000000
+  },
+  "descriptions": {
+    "zero_spend": "Block every paid provider call unless spend is authorised for that run.",
+    "max_concurrency": "Maximum number of tasks the orchestrator runs at the same time.",
+    "max_tasks_per_agent": "Maximum parallel tasks for a single agent.",
+    "task_timeout_seconds": "Wall-clock cap for one task before it is marked as timed out.",
+    "shell_timeout_seconds": "Wall-clock cap for one sandboxed command.",
+    "max_repairs": "Repair attempts before a failing task escalates to a human.",
+    "sandbox_tier": "1 = subprocess with resource limits, 2 = Docker container per project.",
+    "decision_confidence_threshold": "System-1 confidence needed to act without escalating to System 2.",
+    "decision_mode": "auto | laya | laya_mnn | laya_hosted | local | llm",
+    "decisions_enabled": "Turn the System-1 decision layer off to use only deterministic code rules.",
+    "guardrail_sensitivity": "How aggressively the guardrail layer blocks suspicious model output.",
+    "auto_approve_low_risk": "Allow low-risk actions to proceed without a human click.",
+    "low_risk_threshold": "Risk score below which an action may be auto-approved.",
+    "compact_mode": "Reduce city animation for slower hardware.",
+    "default_provider_id": "Provider used first when an agent has no explicit assignment.",
+    "fallback_provider_id": "Provider used when the primary one fails.",
+    "plan_token_budget": "Token cap for a single plan; hitting it pauses the run.",
+    "global_token_budget": "Token cap across all runs; hitting it pauses the run.",
+    "approval_timeout_seconds": "0 = wait indefinitely for a human decision."
+  },
+  "api_token": "captured-run-token-scrubbed-see-ADR",
+  "auth_enabled": true,
+  "paths": {
+    "data_dir": "/tmp/pranit-test-ij1bzn5c/data",
+    "workspaces_dir": "/tmp/pranit-test-ij1bzn5c/workspaces",
+    "database": "sqlite:////tmp/pranit-test-ij1bzn5c/data/test.db"
+  },
+  "sandbox": {
+    "tier": 1,
+    "docker_image": "python:3.12-slim"
+  },
+  "usage": {
+    "calls": 28,
+    "tokens_in": 20220,
+    "tokens_out": 3548,
+    "tokens_total": 23768,
+    "cost_estimate": 0.0,
+    "mocked_calls": 28,
+    "avg_latency_ms": 0.5
+  },
+  "_note": "real captured payload; the throwaway test-run API token was replaced with a placeholder so no credential-shaped string is committed"
+}

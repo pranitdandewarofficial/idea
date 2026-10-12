@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "http_error",
+    "message": "Method Not Allowed",
+    "context": {},
+    "request_id": "4a747cf8e54e"
+  }
+}

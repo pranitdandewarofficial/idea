@@ -1,0 +1,12 @@
+{
+  "tokens_used": 9744,
+  "tokens_plan_budget": 400000,
+  "tokens_global_budget": 2000000,
+  "tokens_plan_remaining": 390256,
+  "cost_estimate": 0.0,
+  "elapsed_seconds": 2.3,
+  "calls": 28,
+  "mocked_calls": 28,
+  "ok": true,
+  "reason": ""
+}

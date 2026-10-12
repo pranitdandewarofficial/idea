@@ -1,0 +1,33 @@
+{
+  "complete": true,
+  "has_provider": true,
+  "has_free_provider": true,
+  "providers": [
+    {
+      "id": "e92288a9c89c42fd961eae1f8151f447",
+      "label": "Offline mock (fixtures)",
+      "kind": "mock",
+      "is_paid": false,
+      "is_enabled": true,
+      "default_model": "mock-agent",
+      "last_test_ok": true,
+      "last_test_message": "Offline mock provider responded locally (0 network calls, 0 cost). Runs using it are marked as mock and are never reported as real deliveries."
+    }
+  ],
+  "zero_spend": true,
+  "api_token": "captured-run-token-scrubbed-see-ADR",
+  "api_base": "http://127.0.0.1:8000",
+  "workspaces_dir": "/tmp/pranit-test-ij1bzn5c/workspaces",
+  "decision_layer": {
+    "enabled": true,
+    "engine": "local",
+    "laya_available": false,
+    "laya_reason": "decision mode forced to local engine",
+    "threshold": 0.85
+  },
+  "sandbox": {
+    "tier": 1,
+    "docker_available": false
+  },
+  "_note": "real captured payload; the throwaway test-run API token was replaced with a placeholder so no credential-shaped string is committed"
+}

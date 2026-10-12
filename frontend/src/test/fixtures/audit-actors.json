@@ -1,0 +1,13 @@
+{
+  "items": [
+    "agent:architect",
+    "agent:backend",
+    "agent:devops",
+    "agent:docs",
+    "agent:frontend",
+    "agent:pm",
+    "agent:qa",
+    "agent:security",
+    "founder"
+  ]
+}

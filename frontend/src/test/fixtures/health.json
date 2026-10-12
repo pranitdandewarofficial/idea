@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "version": "1.0.0",
+  "zero_spend": true,
+  "auth_enabled": true,
+  "sandbox_tier": 1,
+  "docker_available": false,
+  "decisions_enabled": true,
+  "decision_engine": "local",
+  "counts": {
+    "providers": 1,
+    "agents": 12,
+    "projects": 1,
+    "plans": 1
+  },
+  "runs": {
+    "active_runs": [],
+    "count": 0
+  },
+  "python": "3.11.2",
+  "platform": "Linux-6.1.158+-x86_64-with-glibc2.36"
+}

@@ -1,0 +1,234 @@
+{
+  "items": [
+    {
+      "id": 13,
+      "actor": "agent:docs",
+      "action": "task.completed",
+      "target": "cb1761c674f74597a2c2da17182ac75f",
+      "result": "ok",
+      "context": {
+        "files": [
+          "docs/verification.md"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "good",
+          "confidence": 0.4632,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:32.036342"
+    },
+    {
+      "id": 12,
+      "actor": "agent:qa",
+      "action": "task.completed",
+      "target": "efe1449d508d4c3cb5e6077a0722b98d",
+      "result": "ok",
+      "context": {
+        "files": [
+          "tests/test_app.py"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "excellent",
+          "confidence": 0.8968,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:31.666687"
+    },
+    {
+      "id": 11,
+      "actor": "agent:qa",
+      "action": "tool.run_shell",
+      "target": "python -m pytest -q",
+      "result": "ok",
+      "context": {
+        "args": {
+          "command": "python -m pytest -q"
+        },
+        "reason": ""
+      },
+      "created_at": "2026-10-12T08:43:31.316129"
+    },
+    {
+      "id": 10,
+      "actor": "agent:docs",
+      "action": "task.completed",
+      "target": "db093632454c4536b76ba3336d7af7d2",
+      "result": "ok",
+      "context": {
+        "files": [
+          "README.md"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "good",
+          "confidence": 0.4632,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:31.115017"
+    },
+    {
+      "id": 9,
+      "actor": "agent:security",
+      "action": "task.completed",
+      "target": "00b5859960944b939a43cdf5b635f644",
+      "result": "ok",
+      "context": {
+        "files": [
+          "docs/security-review.md"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "good",
+          "confidence": 0.4632,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:31.102696"
+    },
+    {
+      "id": 8,
+      "actor": "agent:devops",
+      "action": "task.completed",
+      "target": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+      "result": "ok",
+      "context": {
+        "files": [
+          "env.example",
+          "requirements.txt",
+          "scripts/run.sh"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "acceptable",
+          "confidence": 0.273,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:31.089941"
+    },
+    {
+      "id": 7,
+      "actor": "agent:backend",
+      "action": "task.completed",
+      "target": "605a7c796ca64e65a00329c64e785e60",
+      "result": "ok",
+      "context": {
+        "files": [
+          "src/app.py"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "acceptable",
+          "confidence": 0.3353,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:30.906451"
+    },
+    {
+      "id": 6,
+      "actor": "agent:frontend",
+      "action": "task.completed",
+      "target": "54e74e2b653847ffaf53b9874b14fb94",
+      "result": "ok",
+      "context": {
+        "files": [
+          "web/index.html"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "excellent",
+          "confidence": 0.8872,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:30.886430"
+    },
+    {
+      "id": 5,
+      "actor": "agent:architect",
+      "action": "task.completed",
+      "target": "2e8a52b96f3d4e5e899513113c7d863b",
+      "result": "ok",
+      "context": {
+        "files": [
+          "docs/architecture.md"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "acceptable",
+          "confidence": 0.2971,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:30.775806"
+    },
+    {
+      "id": 4,
+      "actor": "agent:pm",
+      "action": "task.completed",
+      "target": "78c25e13b5784556abfc62e6a752c8b3",
+      "result": "ok",
+      "context": {
+        "files": [
+          "docs/requirements.md"
+        ],
+        "quality": {
+          "meets_criteria": true,
+          "quality": "good",
+          "confidence": 0.5922,
+          "engine": "local",
+          "hallucination_risk": 0.0266
+        },
+        "mocked": true
+      },
+      "created_at": "2026-10-12T08:43:30.707538"
+    },
+    {
+      "id": 3,
+      "actor": "founder",
+      "action": "knowledge.uploaded",
+      "target": "d43553f4f3d349fcbfb8909792893d41",
+      "result": "ok",
+      "context": {
+        "name": "api-conventions.md",
+        "bytes": 343,
+        "chunks": 1
+      },
+      "created_at": "2026-10-12T08:43:30.445944"
+    },
+    {
+      "id": 2,
+      "actor": "founder",
+      "action": "settings.changed",
+      "target": "settings",
+      "result": "ok",
+      "context": {
+        "default_provider_id": "e92288a9c89c42fd961eae1f8151f447"
+      },
+      "created_at": "2026-10-12T08:43:30.375533"
+    }
+  ],
+  "count": 12
+}

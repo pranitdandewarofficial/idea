@@ -1,0 +1,53 @@
+{
+  "stats": {
+    "total": 40,
+    "by_engine": {
+      "llm": 8,
+      "local": 32
+    },
+    "avg_latency_ms": 3.67,
+    "avg_confidence": 0.7527,
+    "fallback_rate": 0.2,
+    "escalation_rate": 0.425,
+    "laya": {
+      "mode": "local",
+      "available": false,
+      "reason": "decision mode forced to local engine",
+      "version": null,
+      "latency_ms": null,
+      "checked_at": 1791794610.2966979
+    },
+    "threshold": 0.85,
+    "enabled": true
+  },
+  "laya": {
+    "mode": "local",
+    "available": false,
+    "reason": "decision mode forced to local engine",
+    "version": null,
+    "latency_ms": null,
+    "checked_at": 1791794610.2966979
+  },
+  "threshold": 0.85,
+  "thresholds_by_type": {
+    "context_relevance": 0.5525,
+    "event_triage": 0.5525,
+    "guardrail": 0.85,
+    "output_quality": 0.765,
+    "plan_validation": 0.7225,
+    "repair_strategy": 0.7225,
+    "risk_assessment": 0.85,
+    "routing": 0.595
+  },
+  "type_strictness": {
+    "context_relevance": 0.65,
+    "event_triage": 0.65,
+    "guardrail": 1.0,
+    "output_quality": 0.9,
+    "plan_validation": 0.85,
+    "repair_strategy": 0.85,
+    "risk_assessment": 1.0,
+    "routing": 0.7
+  },
+  "enabled": true
+}

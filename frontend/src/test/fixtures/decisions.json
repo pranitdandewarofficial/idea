@@ -1,0 +1,530 @@
+{
+  "items": [
+    {
+      "id": "4aaeca54f8a84260a00627f600f40c70",
+      "decision_type": "output_quality",
+      "engine": "local",
+      "confidence": 0.4632,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.97,
+      "state_hash": "a62a61aea07fae8c23b1b76bb94f98c4769501dd2bc77bb3d0631c5cfe19a057",
+      "answers": {
+        "meets_criteria": {
+          "question_id": "meets_criteria",
+          "type": "noul",
+          "value": true,
+          "probability": 0.9957,
+          "probabilities": {
+            "true": 0.9957,
+            "false": 0.0043
+          },
+          "confidence": 0.9914
+        },
+        "quality_score": {
+          "question_id": "quality_score",
+          "type": "score",
+          "value": "good",
+          "probability": 0.6935,
+          "probabilities": [
+            0.0043,
+            0.0319,
+            0.2359,
+            0.6411,
+            0.0868
+          ],
+          "confidence": 0.4632
+        },
+        "hallucination_risk": {
+          "question_id": "hallucination_risk",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0266,
+          "probabilities": {
+            "true": 0.0266,
+            "false": 0.9734
+          },
+          "confidence": 0.9468
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "cb1761c674f74597a2c2da17182ac75f",
+      "created_at": "2026-10-12T08:43:32.034010"
+    },
+    {
+      "id": "f78f53aa81c74435875d08739ddf000d",
+      "decision_type": "guardrail",
+      "engine": "local",
+      "confidence": 0.9993,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.65,
+      "state_hash": "4fa1b2cd1f9201320f873084da278811a115f42e6cbb8138418ae9eca6964962",
+      "answers": {
+        "contains_injection": {
+          "question_id": "contains_injection",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "requests_destructive_action": {
+          "question_id": "requests_destructive_action",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "leaks_secrets": {
+          "question_id": "leaks_secrets",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "outside_workspace": {
+          "question_id": "outside_workspace",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "cb1761c674f74597a2c2da17182ac75f",
+      "created_at": "2026-10-12T08:43:31.711773"
+    },
+    {
+      "id": "e3939202716e4f0e8033399b26b62dc4",
+      "decision_type": "guardrail",
+      "engine": "local",
+      "confidence": 0.9993,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.78,
+      "state_hash": "9cacdf9a1be8b54a505c30120b0569f3caefdce57d3695629012d0b8b3bdb208",
+      "answers": {
+        "contains_injection": {
+          "question_id": "contains_injection",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "requests_destructive_action": {
+          "question_id": "requests_destructive_action",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "leaks_secrets": {
+          "question_id": "leaks_secrets",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "outside_workspace": {
+          "question_id": "outside_workspace",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "cb1761c674f74597a2c2da17182ac75f",
+      "created_at": "2026-10-12T08:43:31.705297"
+    },
+    {
+      "id": "f0770ffa8aed492aa8e9edc2d98d6b03",
+      "decision_type": "routing",
+      "engine": "local",
+      "confidence": 0.7601,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 1.23,
+      "state_hash": "a6c189a20c389e1ac7d7d5622af29d0cdbaf1aae0936ae23ac4968d40243114d",
+      "answers": {
+        "assigned_agent": {
+          "question_id": "assigned_agent",
+          "type": "choice",
+          "value": "docs",
+          "probability": 0.4122,
+          "probabilities": {
+            "pm": 0.0907,
+            "architect": 0.0426,
+            "research": 0.0679,
+            "designer": 0.0574,
+            "frontend": 0.0574,
+            "backend": 0.0404,
+            "qa": 0.1228,
+            "security": 0.0448,
+            "devops": 0.0639,
+            "docs": 0.4122
+          },
+          "confidence": 0.7601
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "cb1761c674f74597a2c2da17182ac75f",
+      "created_at": "2026-10-12T08:43:31.684923"
+    },
+    {
+      "id": "29840c8250cd47a09056b31e1d609ee4",
+      "decision_type": "output_quality",
+      "engine": "local",
+      "confidence": 0.8968,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 1.76,
+      "state_hash": "cf70f63dd377a608423de8e05a917585242f06869daa3b28f300f548fdcb5dd3",
+      "answers": {
+        "meets_criteria": {
+          "question_id": "meets_criteria",
+          "type": "noul",
+          "value": true,
+          "probability": 1.0,
+          "probabilities": {
+            "true": 1.0,
+            "false": 0.0
+          },
+          "confidence": 0.9999
+        },
+        "quality_score": {
+          "question_id": "quality_score",
+          "type": "score",
+          "value": "excellent",
+          "probability": 0.9626,
+          "probabilities": [
+            0.0002,
+            0.0004,
+            0.0032,
+            0.1413,
+            0.8549
+          ],
+          "confidence": 0.8968
+        },
+        "hallucination_risk": {
+          "question_id": "hallucination_risk",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0266,
+          "probabilities": {
+            "true": 0.0266,
+            "false": 0.9734
+          },
+          "confidence": 0.9468
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "efe1449d508d4c3cb5e6077a0722b98d",
+      "created_at": "2026-10-12T08:43:31.663818"
+    },
+    {
+      "id": "b22024785362414598dad9c4ef984c4c",
+      "decision_type": "guardrail",
+      "engine": "local",
+      "confidence": 0.9951,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.58,
+      "state_hash": "ab9011ff81e1ad61b8e7e646f68ee5686c6f42bb60bbff73480d285b98701b53",
+      "answers": {
+        "contains_injection": {
+          "question_id": "contains_injection",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "requests_destructive_action": {
+          "question_id": "requests_destructive_action",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0025,
+          "probabilities": {
+            "true": 0.0025,
+            "false": 0.9975
+          },
+          "confidence": 0.9951
+        },
+        "leaks_secrets": {
+          "question_id": "leaks_secrets",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "outside_workspace": {
+          "question_id": "outside_workspace",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "efe1449d508d4c3cb5e6077a0722b98d",
+      "created_at": "2026-10-12T08:43:31.321665"
+    },
+    {
+      "id": "8c5bbd85112843ed90c40069950a434b",
+      "decision_type": "output_quality",
+      "engine": "local",
+      "confidence": 0.4632,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.6,
+      "state_hash": "8551df8afdfc289761b3459a10f1ca6af9dee9355ca73ef47e8d686026f039f2",
+      "answers": {
+        "meets_criteria": {
+          "question_id": "meets_criteria",
+          "type": "noul",
+          "value": true,
+          "probability": 0.9975,
+          "probabilities": {
+            "true": 0.9975,
+            "false": 0.0025
+          },
+          "confidence": 0.9949
+        },
+        "quality_score": {
+          "question_id": "quality_score",
+          "type": "score",
+          "value": "good",
+          "probability": 0.6935,
+          "probabilities": [
+            0.0043,
+            0.0319,
+            0.2359,
+            0.6411,
+            0.0868
+          ],
+          "confidence": 0.4632
+        },
+        "hallucination_risk": {
+          "question_id": "hallucination_risk",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0266,
+          "probabilities": {
+            "true": 0.0266,
+            "false": 0.9734
+          },
+          "confidence": 0.9468
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "db093632454c4536b76ba3336d7af7d2",
+      "created_at": "2026-10-12T08:43:31.113672"
+    },
+    {
+      "id": "cf36e778b9834449b7b3314239fdefa4",
+      "decision_type": "output_quality",
+      "engine": "local",
+      "confidence": 0.4632,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.58,
+      "state_hash": "c0efe6a36a21ef61d0ccfa215aab3d5230fce8bc298da9964b6d1709c56605b7",
+      "answers": {
+        "meets_criteria": {
+          "question_id": "meets_criteria",
+          "type": "noul",
+          "value": true,
+          "probability": 0.9973,
+          "probabilities": {
+            "true": 0.9973,
+            "false": 0.0027
+          },
+          "confidence": 0.9947
+        },
+        "quality_score": {
+          "question_id": "quality_score",
+          "type": "score",
+          "value": "good",
+          "probability": 0.6935,
+          "probabilities": [
+            0.0043,
+            0.0319,
+            0.2359,
+            0.6411,
+            0.0868
+          ],
+          "confidence": 0.4632
+        },
+        "hallucination_risk": {
+          "question_id": "hallucination_risk",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0266,
+          "probabilities": {
+            "true": 0.0266,
+            "false": 0.9734
+          },
+          "confidence": 0.9468
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "00b5859960944b939a43cdf5b635f644",
+      "created_at": "2026-10-12T08:43:31.101203"
+    },
+    {
+      "id": "d4ab2211041046dbb962485b65939185",
+      "decision_type": "output_quality",
+      "engine": "local",
+      "confidence": 0.273,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.61,
+      "state_hash": "6676668c4c574f14b481fd96a46298878f042d9dc94428946315a35dbd8a5606",
+      "answers": {
+        "meets_criteria": {
+          "question_id": "meets_criteria",
+          "type": "noul",
+          "value": true,
+          "probability": 0.9238,
+          "probabilities": {
+            "true": 0.9238,
+            "false": 0.0762
+          },
+          "confidence": 0.8476
+        },
+        "quality_score": {
+          "question_id": "quality_score",
+          "type": "score",
+          "value": "acceptable",
+          "probability": 0.62,
+          "probabilities": [
+            0.008,
+            0.0591,
+            0.4369,
+            0.4369,
+            0.0591
+          ],
+          "confidence": 0.273
+        },
+        "hallucination_risk": {
+          "question_id": "hallucination_risk",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0266,
+          "probabilities": {
+            "true": 0.0266,
+            "false": 0.9734
+          },
+          "confidence": 0.9468
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+      "created_at": "2026-10-12T08:43:31.088409"
+    },
+    {
+      "id": "90d558e5722748719b0e0770d924e9d2",
+      "decision_type": "guardrail",
+      "engine": "local",
+      "confidence": 0.9993,
+      "action": "auto",
+      "fallback_used": false,
+      "latency_ms": 0.53,
+      "state_hash": "4fa1b2cd1f9201320f873084da278811a115f42e6cbb8138418ae9eca6964962",
+      "answers": {
+        "contains_injection": {
+          "question_id": "contains_injection",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "requests_destructive_action": {
+          "question_id": "requests_destructive_action",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "leaks_secrets": {
+          "question_id": "leaks_secrets",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        },
+        "outside_workspace": {
+          "question_id": "outside_workspace",
+          "type": "noul",
+          "value": false,
+          "probability": 0.0003,
+          "probabilities": {
+            "true": 0.0003,
+            "false": 0.9997
+          },
+          "confidence": 0.9993
+        }
+      },
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "task_id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+      "created_at": "2026-10-12T08:43:31.081378"
+    }
+  ],
+  "_note": "real captured payload, list shortened to the first 10 items"
+}

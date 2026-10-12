@@ -1,0 +1,70 @@
+{
+  "entries": [
+    {
+      "path": "README.md",
+      "size": 418
+    },
+    {
+      "path": "env.example",
+      "size": 147
+    },
+    {
+      "path": "requirements.txt",
+      "size": 73
+    },
+    {
+      "path": "docs/",
+      "size": 0
+    },
+    {
+      "path": "scripts/",
+      "size": 0
+    },
+    {
+      "path": "src/",
+      "size": 0
+    },
+    {
+      "path": "tests/",
+      "size": 0
+    },
+    {
+      "path": "web/",
+      "size": 0
+    },
+    {
+      "path": "docs/architecture.md",
+      "size": 448
+    },
+    {
+      "path": "docs/requirements.md",
+      "size": 414
+    },
+    {
+      "path": "docs/security-review.md",
+      "size": 432
+    },
+    {
+      "path": "docs/verification.md",
+      "size": 497
+    },
+    {
+      "path": "src/app.py",
+      "size": 265
+    },
+    {
+      "path": "web/index.html",
+      "size": 300
+    },
+    {
+      "path": "tests/test_app.py",
+      "size": 350
+    },
+    {
+      "path": "scripts/run.sh",
+      "size": 122
+    }
+  ],
+  "truncated": false,
+  "count": 16
+}

@@ -1,0 +1,9 @@
+{
+  "calls": 0,
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "tokens_total": 0,
+  "cost_estimate": 0,
+  "mocked_calls": 0,
+  "avg_latency_ms": 0.0
+}

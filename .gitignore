@@ -25,3 +25,20 @@ dist-ssr
 
 # Capacitor native platform (generated in CI)
 android/
+
+# PRANIT AI CITY
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.data/
+workspaces/
+*.db
+*.db-wal
+*.db-shm
+frontend/dist/
+.env
+.env.local

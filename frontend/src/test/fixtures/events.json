@@ -1,0 +1,375 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "kind": "settings.changed",
+      "payload": {
+        "default_provider_id": "e92288a9c89c42fd961eae1f8151f447"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.376624"
+    },
+    {
+      "id": 2,
+      "kind": "provider.test_succeeded",
+      "payload": {
+        "provider_id": "e92288a9c89c42fd961eae1f8151f447",
+        "message": "Offline mock provider responded locally (0 network calls, 0 cost). Runs using it are marked as mock and are never reported as real deliveries.",
+        "latency_ms": 0.1,
+        "provider_kind": "mock",
+        "mocked": true
+      },
+      "priority": "normal",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.396314"
+    },
+    {
+      "id": 3,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "routing",
+        "engine": "llm",
+        "confidence": 0.3704,
+        "action": "escalate",
+        "latency_ms": 7.38,
+        "plan_id": null,
+        "task_id": "probe",
+        "answers": {
+          "assigned_agent": {
+            "value": "qa",
+            "confidence": 0.3704,
+            "probability": 0.1689
+          }
+        },
+        "state_hash": "5fcff72ac956"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.424776"
+    },
+    {
+      "id": 4,
+      "kind": "decision.low_confidence",
+      "payload": {
+        "decision_type": "routing",
+        "confidence": 0.3704,
+        "threshold": 0.85,
+        "fallback_used": true,
+        "plan_id": null,
+        "task_id": "probe"
+      },
+      "priority": "high",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.425663"
+    },
+    {
+      "id": 5,
+      "kind": "decision.fallback",
+      "payload": {
+        "decision_type": "routing",
+        "engine": "llm",
+        "plan_id": null,
+        "task_id": "probe"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.426087"
+    },
+    {
+      "id": 6,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "guardrail",
+        "engine": "local",
+        "confidence": 0.994,
+        "action": "auto",
+        "latency_ms": 0.69,
+        "plan_id": null,
+        "task_id": null,
+        "answers": {
+          "contains_injection": {
+            "value": false,
+            "confidence": 0.994,
+            "probability": 0.003
+          },
+          "requests_destructive_action": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "leaks_secrets": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          },
+          "outside_workspace": {
+            "value": false,
+            "confidence": 0.9993,
+            "probability": 0.0003
+          }
+        },
+        "state_hash": "0313b661d238"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.432700"
+    },
+    {
+      "id": 7,
+      "kind": "knowledge.indexed",
+      "payload": {
+        "source_id": "d43553f4f3d349fcbfb8909792893d41",
+        "name": "api-conventions.md",
+        "chunks": 1,
+        "status": "indexed",
+        "warning": null
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.445365"
+    },
+    {
+      "id": 8,
+      "kind": "knowledge.reindexed",
+      "payload": {
+        "id": "d43553f4f3d349fcbfb8909792893d41",
+        "name": "api-conventions.md",
+        "chunk_count": 1,
+        "index_status": "indexed"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.475173"
+    },
+    {
+      "id": 9,
+      "kind": "objective.received",
+      "payload": {
+        "objective": "Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "workspace": "/tmp/pranit-test-ij1bzn5c/workspaces/fixture-demo"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.544132"
+    },
+    {
+      "id": 10,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "plan_validation",
+        "engine": "local",
+        "confidence": 0.9051,
+        "action": "auto",
+        "latency_ms": 1.06,
+        "plan_id": null,
+        "task_id": null,
+        "answers": {
+          "structurally_valid": {
+            "value": true,
+            "confidence": 0.9993,
+            "probability": 0.9997
+          },
+          "all_tasks_actionable": {
+            "value": true,
+            "confidence": 0.9981,
+            "probability": 0.999
+          },
+          "budget_feasible": {
+            "value": true,
+            "confidence": 0.9879,
+            "probability": 0.9939
+          },
+          "covers_objective": {
+            "value": true,
+            "confidence": 0.9051,
+            "probability": 0.9526
+          }
+        },
+        "state_hash": "52c0dce66b23"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.549688"
+    },
+    {
+      "id": 11,
+      "kind": "plan.thinking",
+      "payload": {
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "provider_id": "e92288a9c89c42fd961eae1f8151f447"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.553762"
+    },
+    {
+      "id": 12,
+      "kind": "plan.created",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+        "task_count": 9,
+        "source": "llm",
+        "heuristic": false,
+        "reason": "",
+        "provider_error": "",
+        "requirements": [
+          "Deliver a working small that satisfies: Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+          "Every file must be written to the project workspace by a tool call (no prose-only output).",
+          "Automated tests must exist and must actually pass before delivery.",
+          "A README must describe how to install, run and test the result."
+        ],
+        "acceptance_criteria": [
+          "The project directory contains the implementation files listed in the plan outputs.",
+          "`python -m pytest -q` (or the stack's equivalent) exits with code 0.",
+          "README.md exists and its setup steps are accurate for a clean machine.",
+          "No secrets are present in any generated file."
+        ]
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.589533"
+    },
+    {
+      "id": 13,
+      "kind": "plan.validated",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "facts": {
+          "ok": true,
+          "errors": [],
+          "task_count": 9,
+          "order": [
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7",
+            "t8",
+            "t9"
+          ],
+          "actionable_ratio": 1.0,
+          "coverage_ratio": 0.6,
+          "estimated_tokens": 28100,
+          "token_budget": 400000,
+          "budget_ok": true
+        }
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.590353"
+    },
+    {
+      "id": 14,
+      "kind": "plan.started",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "project_id": "cc915e88ba104467aa9e9a9396b8fc5a"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.595304"
+    },
+    {
+      "id": 15,
+      "kind": "plan.state_changed",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "previous": "draft",
+        "state": "scheduled"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.613145"
+    },
+    {
+      "id": 16,
+      "kind": "decision.made",
+      "payload": {
+        "decision_type": "routing",
+        "engine": "llm",
+        "confidence": 0.3506,
+        "action": "escalate",
+        "latency_ms": 8.0,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "78c25e13b5784556abfc62e6a752c8b3",
+        "answers": {
+          "assigned_agent": {
+            "value": "docs",
+            "confidence": 0.3506,
+            "probability": 0.3736
+          }
+        },
+        "state_hash": "d6064afb77f5"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.620634"
+    },
+    {
+      "id": 17,
+      "kind": "decision.low_confidence",
+      "payload": {
+        "decision_type": "routing",
+        "confidence": 0.3506,
+        "threshold": 0.85,
+        "fallback_used": true,
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "78c25e13b5784556abfc62e6a752c8b3"
+      },
+      "priority": "high",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.621994"
+    },
+    {
+      "id": 18,
+      "kind": "decision.fallback",
+      "payload": {
+        "decision_type": "routing",
+        "engine": "llm",
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "78c25e13b5784556abfc62e6a752c8b3"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.622890"
+    },
+    {
+      "id": 19,
+      "kind": "decision.routing.confirmed",
+      "payload": {
+        "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+        "task_id": "78c25e13b5784556abfc62e6a752c8b3",
+        "agent_id": "pm",
+        "suggestion": "docs",
+        "confidence": 0.3506,
+        "action": "escalate",
+        "engine": "llm",
+        "fallback_used": true,
+        "latency_ms": 8.0
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.623741"
+    },
+    {
+      "id": 20,
+      "kind": "agent.status_changed",
+      "payload": {
+        "agent_id": "pm",
+        "previous": "idle",
+        "status": "working",
+        "task_id": "78c25e13b5784556abfc62e6a752c8b3"
+      },
+      "priority": "low",
+      "notify": false,
+      "ts": "2026-10-12T08:43:30.633061"
+    }
+  ],
+  "count": 20,
+  "last_id": 152
+}

@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "cc915e88ba104467aa9e9a9396b8fc5a",
+      "name": "fixture-demo",
+      "objective": "Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+      "workspace_path": "/tmp/pranit-test-ij1bzn5c/workspaces/fixture-demo",
+      "status": "complete",
+      "preview_url": null,
+      "preview_port": null,
+      "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "plan_state": "complete",
+      "progress": 1.0,
+      "has_report": true,
+      "created_at": "2026-10-12T08:43:30.502094"
+    }
+  ],
+  "count": 1
+}

@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "id": "e92288a9c89c42fd961eae1f8151f447",
+      "label": "Offline mock (fixtures)",
+      "kind": "mock",
+      "base_url": "mock://local",
+      "organization_id": null,
+      "default_model": "mock-agent",
+      "fallback_model": null,
+      "is_paid": false,
+      "is_enabled": true,
+      "requests_per_minute": 600,
+      "max_concurrent": 4,
+      "timeout_seconds": 120.0,
+      "max_retries": 2,
+      "extra_headers": {},
+      "role_models": {},
+      "models_discovered": [],
+      "last_test_at": "2026-10-12T08:43:30.394922",
+      "last_test_ok": true,
+      "last_test_message": "Offline mock provider responded locally (0 network calls, 0 cost). Runs using it are marked as mock and are never reported as real deliveries.",
+      "last_test_latency_ms": 0.1,
+      "has_key": false,
+      "key_fingerprint": "",
+      "usage": {
+        "calls": 28,
+        "tokens_in": 20220,
+        "tokens_out": 3548,
+        "tokens_total": 23768,
+        "cost_estimate": 0.0,
+        "mocked_calls": 28,
+        "avg_latency_ms": 0.5
+      }
+    }
+  ],
+  "count": 1,
+  "zero_spend": true
+}

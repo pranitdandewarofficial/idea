@@ -1,0 +1,144 @@
+{
+  "items": [
+    {
+      "id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+      "objective": "Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+      "state": "complete",
+      "requirements": [
+        "Deliver a working small that satisfies: Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+        "Every file must be written to the project workspace by a tool call (no prose-only output).",
+        "Automated tests must exist and must actually pass before delivery.",
+        "A README must describe how to install, run and test the result."
+      ],
+      "acceptance_criteria": [
+        "The project directory contains the implementation files listed in the plan outputs.",
+        "`python -m pytest -q` (or the stack's equivalent) exits with code 0.",
+        "README.md exists and its setup steps are accurate for a clean machine.",
+        "No secrets are present in any generated file."
+      ],
+      "assumptions": [
+        "Local-first delivery: no cloud deployment, no external accounts.",
+        "Target runtime is Python 3.11+ unless the objective names another stack.",
+        "Tests use pytest for Python projects."
+      ],
+      "clarifying_questions": [],
+      "heuristic": false,
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "task_count": 9,
+        "order": [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5",
+          "t6",
+          "t7",
+          "t8",
+          "t9"
+        ],
+        "actionable_ratio": 1.0,
+        "coverage_ratio": 0.6,
+        "estimated_tokens": 28100,
+        "token_budget": 400000,
+        "budget_ok": true,
+        "final": {
+          "checks": [
+            {
+              "command": "ls README.md",
+              "code": 0,
+              "passed": true,
+              "stdout": "README.md\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 11.17
+            },
+            {
+              "command": "ls docs/architecture.md",
+              "code": 0,
+              "passed": true,
+              "stdout": "docs/architecture.md\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 6.93
+            },
+            {
+              "command": "ls docs/requirements.md",
+              "code": 0,
+              "passed": true,
+              "stdout": "docs/requirements.md\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 6.79
+            },
+            {
+              "command": "ls docs/security-review.md",
+              "code": 0,
+              "passed": true,
+              "stdout": "docs/security-review.md\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 8.28
+            },
+            {
+              "command": "ls web/index.html",
+              "code": 0,
+              "passed": true,
+              "stdout": "web/index.html\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 8.67
+            },
+            {
+              "command": "python -m compileall -q src",
+              "code": 0,
+              "passed": true,
+              "stdout": "",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 67.27
+            },
+            {
+              "command": "python -m pytest -q",
+              "code": 0,
+              "passed": true,
+              "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+              "stderr": "",
+              "timed_out": false,
+              "sandbox": "subprocess",
+              "duration_ms": 286.8
+            }
+          ],
+          "tests_passed": true,
+          "reason": "",
+          "secret_findings": [],
+          "acceptance_summary": {
+            "pass": 4,
+            "fail": 0,
+            "partial": 0,
+            "manual": 0
+          },
+          "ok": true
+        }
+      },
+      "progress": 1.0,
+      "weight_done": 14,
+      "weight_total": 14,
+      "tokens_used": 9744,
+      "cost_estimate": 0.0,
+      "spend_authorized": false,
+      "failure_reason": null,
+      "started_at": "2026-10-12T08:43:30.594086",
+      "finished_at": "2026-10-12T08:43:32.522745"
+    }
+  ],
+  "count": 1
+}

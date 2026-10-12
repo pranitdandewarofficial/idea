@@ -1,0 +1,54 @@
+{
+  "id": "cb1761c674f74597a2c2da17182ac75f",
+  "external_id": "t9",
+  "plan_id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+  "project_id": "cc915e88ba104467aa9e9a9396b8fc5a",
+  "title": "Final verification against acceptance criteria",
+  "description": "Re-run the full test suite and check every acceptance criterion one by one. Produce docs/verification.md mapping each criterion to the evidence (command + raw output) that proves it. Report honestly if any criterion is unmet.",
+  "agent_id": "docs",
+  "status": "completed",
+  "depends_on": [
+    "efe1449d508d4c3cb5e6077a0722b98d",
+    "00b5859960944b939a43cdf5b635f644",
+    "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+    "db093632454c4536b76ba3336d7af7d2"
+  ],
+  "outputs": [
+    "docs/verification.md"
+  ],
+  "done_criteria": [
+    "docs/verification.md exists",
+    "every acceptance criterion has evidence"
+  ],
+  "verify_commands": [
+    "python -m pytest -q"
+  ],
+  "priority": 1,
+  "effort": 2,
+  "order_index": 8,
+  "retries": 0,
+  "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree.",
+  "error": null,
+  "files_changed": [
+    "docs/verification.md"
+  ],
+  "verification": {
+    "verified": true,
+    "checks": [
+      {
+        "command": "python -m pytest -q",
+        "code": 0,
+        "passed": true,
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "sandbox": "subprocess",
+        "duration_ms": 313.99
+      }
+    ],
+    "reason": ""
+  },
+  "tokens_used": 1489,
+  "created_at": "2026-10-12T08:43:30.584500",
+  "updated_at": "2026-10-12T08:43:32.036659"
+}
