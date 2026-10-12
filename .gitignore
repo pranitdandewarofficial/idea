@@ -42,3 +42,4 @@ workspaces/
 frontend/dist/
 .env
 .env.local
+*.tsbuildinfo
