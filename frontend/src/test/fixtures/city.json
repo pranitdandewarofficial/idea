@@ -1,0 +1,888 @@
+{
+  "world": {
+    "width": 1680,
+    "height": 1120
+  },
+  "buildings": [
+    {
+      "id": "command-tower",
+      "name": "Command Tower",
+      "department": "Command Tower",
+      "x": 700,
+      "y": 120,
+      "w": 240,
+      "h": 190,
+      "color": "#eef0ff",
+      "accent": "#5b6cff",
+      "icon": "tower",
+      "detail": "The orchestrator plans, schedules and verifies from here.",
+      "seats": [
+        [
+          760,
+          250
+        ],
+        [
+          880,
+          250
+        ]
+      ]
+    },
+    {
+      "id": "decision-lab",
+      "name": "Decision Lab",
+      "department": "Decision Lab",
+      "x": 1010,
+      "y": 150,
+      "w": 190,
+      "h": 140,
+      "color": "#f3f0ff",
+      "accent": "#7950f2",
+      "icon": "pulse",
+      "detail": "System 1: fast, typed decisions with calibrated confidence.",
+      "seats": [
+        [
+          1105,
+          250
+        ]
+      ]
+    },
+    {
+      "id": "product-studio",
+      "name": "Product Studio",
+      "department": "Product Studio",
+      "x": 420,
+      "y": 160,
+      "w": 210,
+      "h": 150,
+      "color": "#e9fbfd",
+      "accent": "#0b8fa8",
+      "icon": "clipboard",
+      "detail": "Requirements, acceptance criteria and scope control.",
+      "seats": [
+        [
+          525,
+          265
+        ]
+      ]
+    },
+    {
+      "id": "design-studio",
+      "name": "Design Studio",
+      "department": "Design Studio",
+      "x": 170,
+      "y": 360,
+      "w": 200,
+      "h": 150,
+      "color": "#fff2e8",
+      "accent": "#e8590c",
+      "icon": "palette",
+      "detail": "Layouts, component trees, states and motion rules.",
+      "seats": [
+        [
+          270,
+          465
+        ]
+      ]
+    },
+    {
+      "id": "research-lab",
+      "name": "Research Lab",
+      "department": "Research Lab",
+      "x": 180,
+      "y": 620,
+      "w": 200,
+      "h": 150,
+      "color": "#f3f0ff",
+      "accent": "#6741d9",
+      "icon": "book",
+      "detail": "Evidence-linked findings from approved sources.",
+      "seats": [
+        [
+          280,
+          725
+        ]
+      ]
+    },
+    {
+      "id": "engineering-hq",
+      "name": "Engineering HQ",
+      "department": "Engineering HQ",
+      "x": 1130,
+      "y": 400,
+      "w": 330,
+      "h": 220,
+      "color": "#e6f7f1",
+      "accent": "#0ca678",
+      "icon": "code",
+      "detail": "Architecture, backend and frontend implementation.",
+      "seats": [
+        [
+          1200,
+          470
+        ],
+        [
+          1300,
+          470
+        ],
+        [
+          1400,
+          470
+        ],
+        [
+          1250,
+          570
+        ],
+        [
+          1360,
+          570
+        ]
+      ]
+    },
+    {
+      "id": "collaboration-hub",
+      "name": "Collaboration Hub",
+      "department": "Collaboration Hub",
+      "x": 730,
+      "y": 470,
+      "w": 220,
+      "h": 160,
+      "color": "#fbfbfd",
+      "accent": "#868e96",
+      "icon": "plaza",
+      "detail": "Cross-team handoffs happen on the plaza.",
+      "seats": [
+        [
+          790,
+          560
+        ],
+        [
+          890,
+          560
+        ]
+      ]
+    },
+    {
+      "id": "qa-center",
+      "name": "QA Center",
+      "department": "QA Center",
+      "x": 720,
+      "y": 800,
+      "w": 230,
+      "h": 160,
+      "color": "#fff0f0",
+      "accent": "#e03131",
+      "icon": "flask",
+      "detail": "Real tests, real output, real pass/fail evidence.",
+      "seats": [
+        [
+          790,
+          900
+        ],
+        [
+          890,
+          900
+        ]
+      ]
+    },
+    {
+      "id": "security-ops",
+      "name": "Security Ops",
+      "department": "Security Ops Center",
+      "x": 420,
+      "y": 820,
+      "w": 210,
+      "h": 150,
+      "color": "#f1f3f5",
+      "accent": "#343a40",
+      "icon": "shield",
+      "detail": "Findings ranked by severity, with file and line.",
+      "seats": [
+        [
+          525,
+          920
+        ]
+      ]
+    },
+    {
+      "id": "infra-center",
+      "name": "Infrastructure Center",
+      "department": "Infrastructure Center",
+      "x": 1050,
+      "y": 800,
+      "w": 230,
+      "h": 160,
+      "color": "#ebfbee",
+      "accent": "#2b8a3e",
+      "icon": "server",
+      "detail": "Containers, scripts, environments and previews.",
+      "seats": [
+        [
+          1120,
+          900
+        ],
+        [
+          1220,
+          900
+        ]
+      ]
+    },
+    {
+      "id": "docs-delivery",
+      "name": "Docs & Delivery",
+      "department": "Docs & Delivery",
+      "x": 1350,
+      "y": 680,
+      "w": 210,
+      "h": 150,
+      "color": "#e7f5ff",
+      "accent": "#1c7ed6",
+      "icon": "package",
+      "detail": "README, API docs, decisions log and the final report.",
+      "seats": [
+        [
+          1455,
+          780
+        ]
+      ]
+    }
+  ],
+  "roads": [
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        820,
+        310
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        1105,
+        290
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        525,
+        310
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        270,
+        510
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        280,
+        770
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        1295,
+        620
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        835,
+        960
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        525,
+        970
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        1165,
+        960
+      ]
+    },
+    {
+      "from": [
+        840,
+        550
+      ],
+      "to": [
+        1455,
+        830
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "id": "ceo",
+      "name": "Pranit",
+      "role": "CEO / Orchestrator",
+      "department": "Command Tower",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "ceo-pranit",
+      "is_enabled": true,
+      "model_role": "reasoning",
+      "model": null,
+      "tools": [],
+      "skills": [
+        "planning",
+        "decomposition",
+        "risk assessment",
+        "reporting"
+      ],
+      "city_x": 760.0,
+      "city_y": 250.0,
+      "home_x": 760.0,
+      "home_y": 250.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "command-tower",
+      "current_task": null
+    },
+    {
+      "id": "pm",
+      "name": "Mira",
+      "role": "Product Manager",
+      "department": "Product Studio",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "pm-mira",
+      "is_enabled": true,
+      "model_role": "fast",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "create_dir"
+      ],
+      "skills": [
+        "requirements",
+        "user stories",
+        "prioritisation",
+        "scope control"
+      ],
+      "city_x": 525.0,
+      "city_y": 265.0,
+      "home_x": 525.0,
+      "home_y": 265.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "product-studio",
+      "current_task": null
+    },
+    {
+      "id": "architect",
+      "name": "Karan",
+      "role": "Software Architect",
+      "department": "Engineering HQ",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "architect-karan",
+      "is_enabled": true,
+      "model_role": "reasoning",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "edit_file",
+        "create_dir"
+      ],
+      "skills": [
+        "system design",
+        "data modelling",
+        "api contracts",
+        "dependency selection"
+      ],
+      "city_x": 1200.0,
+      "city_y": 470.0,
+      "home_x": 1200.0,
+      "home_y": 470.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "engineering-hq",
+      "current_task": null
+    },
+    {
+      "id": "research",
+      "name": "Anya",
+      "role": "Research Agent",
+      "department": "Research Lab",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "research-anya",
+      "is_enabled": true,
+      "model_role": "fast",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "knowledge_search",
+        "write_file",
+        "create_dir"
+      ],
+      "skills": [
+        "evidence synthesis",
+        "comparison",
+        "documentation review"
+      ],
+      "city_x": 280.0,
+      "city_y": 725.0,
+      "home_x": 280.0,
+      "home_y": 725.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "research-lab",
+      "current_task": null
+    },
+    {
+      "id": "designer",
+      "name": "Reva",
+      "role": "UI/UX Designer",
+      "department": "Design Studio",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "designer-reva",
+      "is_enabled": true,
+      "model_role": "fast",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "create_dir"
+      ],
+      "skills": [
+        "information architecture",
+        "design systems",
+        "accessibility",
+        "interaction design"
+      ],
+      "city_x": 270.0,
+      "city_y": 465.0,
+      "home_x": 270.0,
+      "home_y": 465.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "design-studio",
+      "current_task": null
+    },
+    {
+      "id": "frontend",
+      "name": "Ishaan",
+      "role": "Frontend Engineer",
+      "department": "Engineering HQ",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "frontend-ishaan",
+      "is_enabled": true,
+      "model_role": "coding",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "edit_file",
+        "create_dir",
+        "run_shell",
+        "run_tests",
+        "run_lint",
+        "run_typecheck",
+        "git_status",
+        "git_diff",
+        "git_commit"
+      ],
+      "skills": [
+        "react",
+        "typescript",
+        "css",
+        "accessibility",
+        "state management"
+      ],
+      "city_x": 1300.0,
+      "city_y": 470.0,
+      "home_x": 1300.0,
+      "home_y": 470.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "engineering-hq",
+      "current_task": null
+    },
+    {
+      "id": "backend",
+      "name": "Dev",
+      "role": "Backend Engineer",
+      "department": "Engineering HQ",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "backend-dev",
+      "is_enabled": true,
+      "model_role": "coding",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "edit_file",
+        "create_dir",
+        "run_shell",
+        "run_tests",
+        "run_lint",
+        "run_typecheck",
+        "git_status",
+        "git_diff",
+        "git_commit",
+        "git_branch",
+        "git_log"
+      ],
+      "skills": [
+        "python",
+        "fastapi",
+        "sql",
+        "api design",
+        "error handling"
+      ],
+      "city_x": 1400.0,
+      "city_y": 470.0,
+      "home_x": 1400.0,
+      "home_y": 470.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "engineering-hq",
+      "current_task": null
+    },
+    {
+      "id": "qa",
+      "name": "Rhea",
+      "role": "QA Engineer",
+      "department": "QA Center",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "qa-rhea",
+      "is_enabled": true,
+      "model_role": "review",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "create_dir",
+        "edit_file",
+        "run_shell",
+        "run_tests",
+        "run_lint",
+        "run_typecheck"
+      ],
+      "skills": [
+        "pytest",
+        "test design",
+        "defect reproduction",
+        "evidence reporting"
+      ],
+      "city_x": 790.0,
+      "city_y": 900.0,
+      "home_x": 790.0,
+      "home_y": 900.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "qa-center",
+      "current_task": null
+    },
+    {
+      "id": "security",
+      "name": "Vikram",
+      "role": "Security Engineer",
+      "department": "Security Ops Center",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "security-vikram",
+      "is_enabled": true,
+      "model_role": "review",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "run_shell",
+        "write_file",
+        "create_dir"
+      ],
+      "skills": [
+        "threat modelling",
+        "secret scanning",
+        "input validation",
+        "dependency audit"
+      ],
+      "city_x": 525.0,
+      "city_y": 920.0,
+      "home_x": 525.0,
+      "home_y": 920.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "security-ops",
+      "current_task": null
+    },
+    {
+      "id": "devops",
+      "name": "Noor",
+      "role": "DevOps Engineer",
+      "department": "Infrastructure Center",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "devops-noor",
+      "is_enabled": true,
+      "model_role": "coding",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "edit_file",
+        "create_dir",
+        "run_shell",
+        "run_tests"
+      ],
+      "skills": [
+        "docker",
+        "ci",
+        "shell scripting",
+        "environment management"
+      ],
+      "city_x": 1120.0,
+      "city_y": 900.0,
+      "home_x": 1120.0,
+      "home_y": 900.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "infra-center",
+      "current_task": null
+    },
+    {
+      "id": "docs",
+      "name": "Tara",
+      "role": "Documentation Agent",
+      "department": "Docs & Delivery",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "docs-tara",
+      "is_enabled": true,
+      "model_role": "fast",
+      "model": null,
+      "tools": [
+        "read_file",
+        "list_dir",
+        "workspace_tree",
+        "search_in_workspace",
+        "write_file",
+        "create_dir",
+        "edit_file"
+      ],
+      "skills": [
+        "technical writing",
+        "api documentation",
+        "setup guides"
+      ],
+      "city_x": 1455.0,
+      "city_y": 780.0,
+      "home_x": 1455.0,
+      "home_y": 780.0,
+      "load": 0,
+      "is_decision_agent": false,
+      "building_id": "docs-delivery",
+      "current_task": null
+    },
+    {
+      "id": "laya",
+      "name": "Laya",
+      "role": "Decision Engine (System 1)",
+      "department": "Decision Lab",
+      "status": "idle",
+      "current_task_id": null,
+      "avatar_seed": "laya-laya",
+      "is_enabled": true,
+      "model_role": "local",
+      "model": null,
+      "tools": [],
+      "skills": [
+        "classification",
+        "scoring",
+        "calibrated boolean judgement"
+      ],
+      "city_x": 1105.0,
+      "city_y": 250.0,
+      "home_x": 1105.0,
+      "home_y": 250.0,
+      "load": 0,
+      "is_decision_agent": true,
+      "building_id": "decision-lab",
+      "current_task": null
+    }
+  ],
+  "order": [
+    "command-tower",
+    "decision-lab",
+    "product-studio",
+    "design-studio",
+    "research-lab",
+    "engineering-hq",
+    "collaboration-hub",
+    "qa-center",
+    "security-ops",
+    "infra-center",
+    "docs-delivery"
+  ],
+  "buildings_state": {
+    "command-tower": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "ceo"
+      ]
+    },
+    "decision-lab": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "laya"
+      ]
+    },
+    "product-studio": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "pm"
+      ]
+    },
+    "design-studio": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "designer"
+      ]
+    },
+    "research-lab": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "research"
+      ]
+    },
+    "engineering-hq": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "architect",
+        "frontend",
+        "backend"
+      ]
+    },
+    "collaboration-hub": {
+      "active": 0,
+      "blocked": 0,
+      "agents": []
+    },
+    "qa-center": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "qa"
+      ]
+    },
+    "security-ops": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "security"
+      ]
+    },
+    "infra-center": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "devops"
+      ]
+    },
+    "docs-delivery": {
+      "active": 0,
+      "blocked": 0,
+      "agents": [
+        "docs"
+      ]
+    }
+  },
+  "task_markers": [],
+  "active_plans": [],
+  "pending_approvals": 0,
+  "providers": [
+    {
+      "id": "e92288a9c89c42fd961eae1f8151f447",
+      "label": "Offline mock (fixtures)",
+      "kind": "mock",
+      "is_paid": false,
+      "is_enabled": true,
+      "last_test_ok": true,
+      "last_test_message": "Offline mock provider responded locally (0 network calls, 0 cost). Runs using it are marked as mock and are never reported as real deliveries."
+    }
+  ],
+  "degraded_providers": [],
+  "zero_spend": true,
+  "compact_mode": false,
+  "connection": {
+    "event_subscribers": 0
+  }
+}

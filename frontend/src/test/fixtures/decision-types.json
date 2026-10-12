@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "type": "routing",
+      "primitive": "choice",
+      "purpose": "Pick the agent that should own a task."
+    },
+    {
+      "type": "plan_validation",
+      "primitive": "noul",
+      "purpose": "Semantic pre-check on a generated plan."
+    },
+    {
+      "type": "output_quality",
+      "primitive": "noul + score",
+      "purpose": "Gate an agent's output before it enters the next task's context."
+    },
+    {
+      "type": "repair_strategy",
+      "primitive": "noul + choice",
+      "purpose": "Decide whether a failure is repairable and how."
+    },
+    {
+      "type": "guardrail",
+      "primitive": "noul",
+      "purpose": "Injection, destructive action, secret leak and path escape checks."
+    },
+    {
+      "type": "risk",
+      "primitive": "noul + score",
+      "purpose": "Confidence-gated human approval."
+    },
+    {
+      "type": "event_triage",
+      "primitive": "choice + noul",
+      "purpose": "Priority and notification decisions for the activity stream."
+    },
+    {
+      "type": "context_relevance",
+      "primitive": "noul + score",
+      "purpose": "Re-rank retrieved memory and knowledge."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "path": "src/app.py",
+  "content": "\"\"\"app \u2014 generated for: Implement the small backend.\"\"\"\n\n\ndef health() -> dict:\n    \"\"\"Liveness probe.\"\"\"\n    return {\"status\": \"ok\", \"module\": \"app\"}\n\n\ndef add(left: float, right: float) -> float:\n    \"\"\"Return the sum of two numbers.\"\"\"\n    return left + right\n",
+  "size": 265,
+  "truncated": false
+}

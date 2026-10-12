@@ -1,0 +1,31 @@
+{
+  "decision_type": "routing",
+  "engine": "llm",
+  "confidence": 0.3704,
+  "action": "escalate",
+  "latency_ms": 7.38,
+  "fallback_used": true,
+  "note": "below the 0.59 gate for routing | escalated to System 2 (LLM)",
+  "answers": {
+    "assigned_agent": {
+      "question_id": "assigned_agent",
+      "type": "choice",
+      "value": "qa",
+      "probability": 0.1689,
+      "probabilities": {
+        "pm": 0.1088,
+        "architect": 0.0763,
+        "research": 0.0693,
+        "designer": 0.0984,
+        "frontend": 0.108,
+        "backend": 0.1074,
+        "qa": 0.1689,
+        "security": 0.0693,
+        "devops": 0.1086,
+        "docs": 0.0851
+      },
+      "confidence": 0.3704
+    }
+  },
+  "threshold": 0.85
+}

@@ -1,0 +1,14 @@
+{
+  "global": {
+    "calls": 28,
+    "tokens_in": 20220,
+    "tokens_out": 3548,
+    "tokens_total": 23768,
+    "cost_estimate": 0.0,
+    "mocked_calls": 28,
+    "avg_latency_ms": 0.5
+  },
+  "global_token_budget": 2000000,
+  "plan_token_budget": 400000,
+  "zero_spend": true
+}

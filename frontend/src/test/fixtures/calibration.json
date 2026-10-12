@@ -1,0 +1,17 @@
+{
+  "total": 0,
+  "buckets": {
+    "0.0-0.1": 0,
+    "0.1-0.2": 0,
+    "0.2-0.3": 0,
+    "0.3-0.4": 0,
+    "0.4-0.5": 0,
+    "0.5-0.6": 0,
+    "0.6-0.7": 0,
+    "0.7-0.8": 0,
+    "0.8-0.9": 0,
+    "0.9-1.0": 0
+  },
+  "threshold": 0.85,
+  "note": "Accuracy-vs-confidence calibration requires a labelled set; see backend/tests/test_decisions.py::test_confidence_is_separable and docs/decisions/ADR-0004-decision-layer.md."
+}

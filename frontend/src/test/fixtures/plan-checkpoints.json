@@ -1,0 +1,168 @@
+{
+  "items": [
+    {
+      "id": "e8ca08d4fe28413ba0de8a9831ba4f7a",
+      "sequence": 10,
+      "reason": "plan_finished",
+      "created_at": "2026-10-12T08:43:32.543483",
+      "task_count": 9
+    },
+    {
+      "id": "faf68af421c54c86b1c2d5f9c7de6365",
+      "sequence": 9,
+      "reason": "task:cb1761c674f74597a2c2da17182ac75f",
+      "created_at": "2026-10-12T08:43:32.041826",
+      "task_count": 9
+    },
+    {
+      "id": "09ab1b98a6e743bb951c47801a6001e9",
+      "sequence": 8,
+      "reason": "task:efe1449d508d4c3cb5e6077a0722b98d",
+      "created_at": "2026-10-12T08:43:31.673266",
+      "task_count": 9
+    },
+    {
+      "id": "cafb94abcac74ceca9c7e5aab4829a45",
+      "sequence": 7,
+      "reason": "task:db093632454c4536b76ba3336d7af7d2",
+      "created_at": "2026-10-12T08:43:31.118658",
+      "task_count": 9
+    },
+    {
+      "id": "fb2bfbbeddc84f63b23f220060e29465",
+      "sequence": 6,
+      "reason": "task:00b5859960944b939a43cdf5b635f644",
+      "created_at": "2026-10-12T08:43:31.106814",
+      "task_count": 9
+    },
+    {
+      "id": "d51f453f1e744d419ab6fecc0c1f8169",
+      "sequence": 5,
+      "reason": "task:54e49a04a6e24c218ec1f1d3c6b4e5a4",
+      "created_at": "2026-10-12T08:43:31.094597",
+      "task_count": 9
+    },
+    {
+      "id": "20326b21e7264cb08d4f88fdb9e03519",
+      "sequence": 4,
+      "reason": "task:605a7c796ca64e65a00329c64e785e60",
+      "created_at": "2026-10-12T08:43:30.910564",
+      "task_count": 9
+    },
+    {
+      "id": "7649d34b9fa1436dbab78cc01a2bc09f",
+      "sequence": 3,
+      "reason": "task:54e74e2b653847ffaf53b9874b14fb94",
+      "created_at": "2026-10-12T08:43:30.891490",
+      "task_count": 9
+    }
+  ],
+  "latest": {
+    "id": "e8ca08d4fe28413ba0de8a9831ba4f7a",
+    "sequence": 10,
+    "snapshot": {
+      "plan_state": "complete",
+      "progress": 1.0,
+      "weight_done": 14,
+      "weight_total": 14,
+      "tokens_used": 9744,
+      "tasks": [
+        {
+          "id": "78c25e13b5784556abfc62e6a752c8b3",
+          "external_id": "t1",
+          "status": "completed",
+          "agent_id": "pm",
+          "retries": 0,
+          "files_changed": [
+            "docs/requirements.md"
+          ]
+        },
+        {
+          "id": "2e8a52b96f3d4e5e899513113c7d863b",
+          "external_id": "t2",
+          "status": "completed",
+          "agent_id": "architect",
+          "retries": 0,
+          "files_changed": [
+            "docs/architecture.md"
+          ]
+        },
+        {
+          "id": "605a7c796ca64e65a00329c64e785e60",
+          "external_id": "t3",
+          "status": "completed",
+          "agent_id": "backend",
+          "retries": 0,
+          "files_changed": [
+            "src/app.py"
+          ]
+        },
+        {
+          "id": "54e74e2b653847ffaf53b9874b14fb94",
+          "external_id": "t4",
+          "status": "completed",
+          "agent_id": "frontend",
+          "retries": 0,
+          "files_changed": [
+            "web/index.html"
+          ]
+        },
+        {
+          "id": "efe1449d508d4c3cb5e6077a0722b98d",
+          "external_id": "t5",
+          "status": "completed",
+          "agent_id": "qa",
+          "retries": 0,
+          "files_changed": [
+            "tests/test_app.py"
+          ]
+        },
+        {
+          "id": "00b5859960944b939a43cdf5b635f644",
+          "external_id": "t6",
+          "status": "completed",
+          "agent_id": "security",
+          "retries": 0,
+          "files_changed": [
+            "docs/security-review.md"
+          ]
+        },
+        {
+          "id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+          "external_id": "t7",
+          "status": "completed",
+          "agent_id": "devops",
+          "retries": 0,
+          "files_changed": [
+            "env.example",
+            "requirements.txt",
+            "scripts/run.sh"
+          ]
+        },
+        {
+          "id": "db093632454c4536b76ba3336d7af7d2",
+          "external_id": "t8",
+          "status": "completed",
+          "agent_id": "docs",
+          "retries": 0,
+          "files_changed": [
+            "README.md"
+          ]
+        },
+        {
+          "id": "cb1761c674f74597a2c2da17182ac75f",
+          "external_id": "t9",
+          "status": "completed",
+          "agent_id": "docs",
+          "retries": 0,
+          "files_changed": [
+            "docs/verification.md"
+          ]
+        }
+      ]
+    },
+    "created_at": "2026-10-12T08:43:32.543483",
+    "reason": "plan_finished"
+  },
+  "_note": "real captured payload, list shortened to the first 8 items"
+}

@@ -1,0 +1,18 @@
+{
+  "query": "error envelope status codes",
+  "results": [
+    {
+      "score": 1.798,
+      "text": "# API conventions\n\n## Errors\nEvery endpoint returns a single error envelope:\n\n    {\"error\": {\"code\": \"...\", \"message\": \"...\", \"context\": {}, \"request_id\": \"...\"}}\n\nStatus codes: 400 validation_error, 401 unauthorized, 404 not_found, 409 conflict.\n\n## Style\nLight first. One accent colour. No decorative gradients. Numbers use tabular figures.",
+      "source_id": "d43553f4f3d349fcbfb8909792893d41",
+      "source_name": "api-conventions.md",
+      "position": 0,
+      "tags": [
+        "api",
+        "conventions"
+      ]
+    }
+  ],
+  "engine": "keyword-bm25",
+  "indexed_chunks": 1
+}

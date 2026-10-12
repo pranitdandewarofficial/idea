@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "message": "Offline mock provider responded locally (0 network calls, 0 cost). Runs using it are marked as mock and are never reported as real deliveries.",
+  "latency_ms": 0.1,
+  "kind": "mock",
+  "is_paid": false,
+  "mocked": true,
+  "model": "mock-agent"
+}

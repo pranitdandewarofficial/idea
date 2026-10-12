@@ -1,0 +1,587 @@
+{
+  "id": "cc915e88ba104467aa9e9a9396b8fc5a",
+  "name": "fixture-demo",
+  "objective": "Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+  "workspace_path": "/tmp/pranit-test-ij1bzn5c/workspaces/fixture-demo",
+  "status": "complete",
+  "preview_url": null,
+  "preview_port": null,
+  "report": {
+    "project": {
+      "id": "cc915e88ba104467aa9e9a9396b8fc5a",
+      "name": "fixture-demo",
+      "workspace": "/tmp/pranit-test-ij1bzn5c/workspaces/fixture-demo"
+    },
+    "objective": "Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+    "state": "complete",
+    "delivered": false,
+    "summary": "All 9 tasks completed and verification passed. The workspace contains real files and the executed checks exited 0.",
+    "requirements": [
+      "Deliver a working small that satisfies: Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+      "Every file must be written to the project workspace by a tool call (no prose-only output).",
+      "Automated tests must exist and must actually pass before delivery.",
+      "A README must describe how to install, run and test the result."
+    ],
+    "acceptance_criteria": [
+      {
+        "criterion": "The project directory contains the implementation files listed in the plan outputs.",
+        "status": "pass",
+        "evidence": "Workspace contains 34 file(s)."
+      },
+      {
+        "criterion": "`python -m pytest -q` (or the stack's equivalent) exits with code 0.",
+        "status": "pass",
+        "evidence": "`python -m pytest -q` exit 0"
+      },
+      {
+        "criterion": "README.md exists and its setup steps are accurate for a clean machine.",
+        "status": "pass",
+        "evidence": "README.md exists (418 bytes)."
+      },
+      {
+        "criterion": "No secrets are present in any generated file.",
+        "status": "pass",
+        "evidence": "Workspace secret scan found nothing."
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t1",
+        "title": "Write requirements and acceptance criteria",
+        "agent_id": "pm",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "docs/requirements.md"
+        ],
+        "verified": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      {
+        "id": "t2",
+        "title": "Define architecture and module interfaces",
+        "agent_id": "architect",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "docs/architecture.md"
+        ],
+        "verified": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      {
+        "id": "t3",
+        "title": "Implement the small backend",
+        "agent_id": "backend",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "src/app.py"
+        ],
+        "verified": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      {
+        "id": "t4",
+        "title": "Implement the small frontend",
+        "agent_id": "frontend",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "web/index.html"
+        ],
+        "verified": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      {
+        "id": "t5",
+        "title": "Write and run the test suite",
+        "agent_id": "qa",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "tests/test_app.py"
+        ],
+        "verified": true,
+        "summary": "assigned work\npassed: false\nExecuted `python -m pytest -q` inside the project workspace with the run_shell tool.\nraw_output:\n```\n- write_file [ok]: {\"path\": \"tests/test_app.py\", \"bytes\": 350, \"created\": true, \"previous_bytes\": null, \"_hash_before\": \"cf9ae8bfaf592ea7\", \"_hash_after\": \"e0ade134addcd6bf\"}\n- run_shell [ok]: {\"code\": 0, \"stdout\": \"..                                                                       [100%]\\n2 passed in 0.01s\\n\", \"stderr\": \"\", \"duration_ms\": 302.5, \"timed_out\": false, \"command\": \"/home/user/idea/backend/.venv/bin/python -m pytest -q\", \"truncated\": false, \"sandbox"
+      },
+      {
+        "id": "t6",
+        "title": "Security review of the delivered code",
+        "agent_id": "security",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "docs/security-review.md"
+        ],
+        "verified": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      {
+        "id": "t7",
+        "title": "Provide reproducible run instructions",
+        "agent_id": "devops",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "env.example",
+          "requirements.txt",
+          "scripts/run.sh"
+        ],
+        "verified": null,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      {
+        "id": "t8",
+        "title": "Write the README",
+        "agent_id": "docs",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "README.md"
+        ],
+        "verified": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      },
+      {
+        "id": "t9",
+        "title": "Final verification against acceptance criteria",
+        "agent_id": "docs",
+        "status": "completed",
+        "retries": 0,
+        "files_changed": [
+          "docs/verification.md"
+        ],
+        "verified": true,
+        "summary": "Completed 'assigned work'. Files written to the workspace as requested; outputs were created with the write_file tool and can be inspected in the project tree."
+      }
+    ],
+    "verification": {
+      "checks": [
+        {
+          "command": "ls README.md",
+          "code": 0,
+          "passed": true,
+          "stdout": "README.md\n",
+          "stderr": "",
+          "timed_out": false,
+          "sandbox": "subprocess",
+          "duration_ms": 11.17
+        },
+        {
+          "command": "ls docs/architecture.md",
+          "code": 0,
+          "passed": true,
+          "stdout": "docs/architecture.md\n",
+          "stderr": "",
+          "timed_out": false,
+          "sandbox": "subprocess",
+          "duration_ms": 6.93
+        },
+        {
+          "command": "ls docs/requirements.md",
+          "code": 0,
+          "passed": true,
+          "stdout": "docs/requirements.md\n",
+          "stderr": "",
+          "timed_out": false,
+          "sandbox": "subprocess",
+          "duration_ms": 6.79
+        },
+        {
+          "command": "ls docs/security-review.md",
+          "code": 0,
+          "passed": true,
+          "stdout": "docs/security-review.md\n",
+          "stderr": "",
+          "timed_out": false,
+          "sandbox": "subprocess",
+          "duration_ms": 8.28
+        },
+        {
+          "command": "ls web/index.html",
+          "code": 0,
+          "passed": true,
+          "stdout": "web/index.html\n",
+          "stderr": "",
+          "timed_out": false,
+          "sandbox": "subprocess",
+          "duration_ms": 8.67
+        },
+        {
+          "command": "python -m compileall -q src",
+          "code": 0,
+          "passed": true,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "sandbox": "subprocess",
+          "duration_ms": 67.27
+        },
+        {
+          "command": "python -m pytest -q",
+          "code": 0,
+          "passed": true,
+          "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+          "stderr": "",
+          "timed_out": false,
+          "sandbox": "subprocess",
+          "duration_ms": 286.8
+        }
+      ],
+      "tests_passed": true,
+      "reason": "",
+      "secret_findings": [],
+      "acceptance_summary": {
+        "pass": 4,
+        "fail": 0,
+        "partial": 0,
+        "manual": 0
+      },
+      "ok": true
+    },
+    "artifacts": {
+      "files": [
+        {
+          "path": "README.md",
+          "size": 418
+        },
+        {
+          "path": "env.example",
+          "size": 147
+        },
+        {
+          "path": "requirements.txt",
+          "size": 73
+        },
+        {
+          "path": "docs/architecture.md",
+          "size": 448
+        },
+        {
+          "path": "docs/requirements.md",
+          "size": 414
+        },
+        {
+          "path": "docs/security-review.md",
+          "size": 432
+        },
+        {
+          "path": "docs/verification.md",
+          "size": 497
+        },
+        {
+          "path": "src/app.py",
+          "size": 265
+        },
+        {
+          "path": "web/index.html",
+          "size": 300
+        },
+        {
+          "path": "tests/test_app.py",
+          "size": 350
+        },
+        {
+          "path": "scripts/run.sh",
+          "size": 122
+        }
+      ],
+      "file_count": 11,
+      "workspace_hash": "3e91f3efcd357f06"
+    },
+    "metrics": {
+      "task_counts": {
+        "completed": 9,
+        "failed": 0,
+        "cancelled": 0,
+        "blocked": 0,
+        "other": 0
+      },
+      "tool_calls": 13,
+      "tool_calls_denied": 0,
+      "decisions": 37,
+      "decision_engines": {
+        "llm": 7,
+        "local": 30
+      },
+      "decisions_escalated_to_llm": 7,
+      "tokens_in": 8023,
+      "tokens_out": 1721,
+      "cost_estimate": 0.0,
+      "mocked_calls": 28,
+      "tokens_used": 9744,
+      "tokens_plan_budget": 400000,
+      "tokens_global_budget": 2000000,
+      "tokens_plan_remaining": 390256,
+      "elapsed_seconds": 1.9,
+      "calls": 28,
+      "ok": true,
+      "reason": ""
+    },
+    "preview": {
+      "running": false
+    },
+    "limitations": [
+      "At least one step used the offline mock provider. This run is a dry run and is NOT a real delivery \u2014 re-run with a configured AI provider.",
+      "1 task(s) had no automated verification command, so their outputs were accepted on the output-contract check alone."
+    ],
+    "used_mock_provider": true,
+    "git": {
+      "committed": true,
+      "code": 0,
+      "stderr": "",
+      "commit": "0b9a4294a8880f508198186982f278ddb6fb2c0e"
+    }
+  },
+  "plans": [
+    {
+      "id": "d8a2bb1a88344a6da6f1c28a7ccc704e",
+      "state": "complete",
+      "progress": 1.0,
+      "heuristic": false,
+      "objective": "Build a small Python API service that exposes a health endpoint and an add(a, b) function, with pytest tests, a README and a requirements file.",
+      "failure_reason": null,
+      "created_at": "2026-10-12T08:43:30.567019"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "78c25e13b5784556abfc62e6a752c8b3",
+      "external_id": "t1",
+      "title": "Write requirements and acceptance criteria",
+      "status": "completed",
+      "agent_id": "pm",
+      "files_changed": [
+        "docs/requirements.md"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "ls docs/requirements.md",
+            "code": 0,
+            "passed": true,
+            "stdout": "docs/requirements.md\n",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 15.07
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    },
+    {
+      "id": "2e8a52b96f3d4e5e899513113c7d863b",
+      "external_id": "t2",
+      "title": "Define architecture and module interfaces",
+      "status": "completed",
+      "agent_id": "architect",
+      "files_changed": [
+        "docs/architecture.md"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "ls docs/architecture.md",
+            "code": 0,
+            "passed": true,
+            "stdout": "docs/architecture.md\n",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 14.25
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    },
+    {
+      "id": "605a7c796ca64e65a00329c64e785e60",
+      "external_id": "t3",
+      "title": "Implement the small backend",
+      "status": "completed",
+      "agent_id": "backend",
+      "files_changed": [
+        "src/app.py"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "python -m compileall -q src",
+            "code": 0,
+            "passed": true,
+            "stdout": "",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 52.59
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    },
+    {
+      "id": "54e74e2b653847ffaf53b9874b14fb94",
+      "external_id": "t4",
+      "title": "Implement the small frontend",
+      "status": "completed",
+      "agent_id": "frontend",
+      "files_changed": [
+        "web/index.html"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "ls web/index.html",
+            "code": 0,
+            "passed": true,
+            "stdout": "web/index.html\n",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 8.75
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    },
+    {
+      "id": "efe1449d508d4c3cb5e6077a0722b98d",
+      "external_id": "t5",
+      "title": "Write and run the test suite",
+      "status": "completed",
+      "agent_id": "qa",
+      "files_changed": [
+        "tests/test_app.py"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "python -m pytest -q",
+            "code": 0,
+            "passed": true,
+            "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 331.39
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    },
+    {
+      "id": "00b5859960944b939a43cdf5b635f644",
+      "external_id": "t6",
+      "title": "Security review of the delivered code",
+      "status": "completed",
+      "agent_id": "security",
+      "files_changed": [
+        "docs/security-review.md"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "ls docs/security-review.md",
+            "code": 0,
+            "passed": true,
+            "stdout": "docs/security-review.md\n",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 71.83
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    },
+    {
+      "id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+      "external_id": "t7",
+      "title": "Provide reproducible run instructions",
+      "status": "completed",
+      "agent_id": "devops",
+      "files_changed": [
+        "env.example",
+        "requirements.txt",
+        "scripts/run.sh"
+      ],
+      "verification": {
+        "verified": null,
+        "checks": [],
+        "reason": "This task declared no verify_commands, so no automated evidence was collected. Acceptance rests on the output contract check."
+      },
+      "error": null
+    },
+    {
+      "id": "db093632454c4536b76ba3336d7af7d2",
+      "external_id": "t8",
+      "title": "Write the README",
+      "status": "completed",
+      "agent_id": "docs",
+      "files_changed": [
+        "README.md"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "ls README.md",
+            "code": 0,
+            "passed": true,
+            "stdout": "README.md\n",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 45.56
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    },
+    {
+      "id": "cb1761c674f74597a2c2da17182ac75f",
+      "external_id": "t9",
+      "title": "Final verification against acceptance criteria",
+      "status": "completed",
+      "agent_id": "docs",
+      "files_changed": [
+        "docs/verification.md"
+      ],
+      "verification": {
+        "verified": true,
+        "checks": [
+          {
+            "command": "python -m pytest -q",
+            "code": 0,
+            "passed": true,
+            "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+            "stderr": "",
+            "timed_out": false,
+            "sandbox": "subprocess",
+            "duration_ms": 313.99
+          }
+        ],
+        "reason": ""
+      },
+      "error": null
+    }
+  ],
+  "preview": {
+    "running": false
+  }
+}

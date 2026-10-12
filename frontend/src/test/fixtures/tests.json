@@ -1,0 +1,11 @@
+{
+  "command": "/home/user/idea/backend/.venv/bin/python -m pytest -q",
+  "code": 0,
+  "passed": true,
+  "detected": true,
+  "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+  "stderr": "",
+  "duration_ms": 315.42,
+  "sandbox": "subprocess",
+  "timed_out": false
+}

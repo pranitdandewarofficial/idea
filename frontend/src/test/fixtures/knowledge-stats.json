@@ -1,0 +1,7 @@
+{
+  "sources": 1,
+  "chunks": 1,
+  "bytes": 343,
+  "engine": "keyword-bm25",
+  "embedding_model": null
+}

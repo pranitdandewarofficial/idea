@@ -1,0 +1,170 @@
+{
+  "nodes": [
+    {
+      "id": "78c25e13b5784556abfc62e6a752c8b3",
+      "external_id": "t1",
+      "title": "Write requirements and acceptance criteria",
+      "agent_id": "pm",
+      "status": "completed",
+      "priority": 1,
+      "effort": 1,
+      "department": "Product Studio"
+    },
+    {
+      "id": "2e8a52b96f3d4e5e899513113c7d863b",
+      "external_id": "t2",
+      "title": "Define architecture and module interfaces",
+      "agent_id": "architect",
+      "status": "completed",
+      "priority": 1,
+      "effort": 1,
+      "department": "Engineering HQ"
+    },
+    {
+      "id": "605a7c796ca64e65a00329c64e785e60",
+      "external_id": "t3",
+      "title": "Implement the small backend",
+      "agent_id": "backend",
+      "status": "completed",
+      "priority": 2,
+      "effort": 3,
+      "department": "Engineering HQ"
+    },
+    {
+      "id": "54e74e2b653847ffaf53b9874b14fb94",
+      "external_id": "t4",
+      "title": "Implement the small frontend",
+      "agent_id": "frontend",
+      "status": "completed",
+      "priority": 3,
+      "effort": 2,
+      "department": "Engineering HQ"
+    },
+    {
+      "id": "efe1449d508d4c3cb5e6077a0722b98d",
+      "external_id": "t5",
+      "title": "Write and run the test suite",
+      "agent_id": "qa",
+      "status": "completed",
+      "priority": 1,
+      "effort": 2,
+      "department": "QA Center"
+    },
+    {
+      "id": "00b5859960944b939a43cdf5b635f644",
+      "external_id": "t6",
+      "title": "Security review of the delivered code",
+      "agent_id": "security",
+      "status": "completed",
+      "priority": 2,
+      "effort": 1,
+      "department": "Security Ops Center"
+    },
+    {
+      "id": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+      "external_id": "t7",
+      "title": "Provide reproducible run instructions",
+      "agent_id": "devops",
+      "status": "completed",
+      "priority": 3,
+      "effort": 1,
+      "department": "Infrastructure Center"
+    },
+    {
+      "id": "db093632454c4536b76ba3336d7af7d2",
+      "external_id": "t8",
+      "title": "Write the README",
+      "agent_id": "docs",
+      "status": "completed",
+      "priority": 3,
+      "effort": 1,
+      "department": "Docs & Delivery"
+    },
+    {
+      "id": "cb1761c674f74597a2c2da17182ac75f",
+      "external_id": "t9",
+      "title": "Final verification against acceptance criteria",
+      "agent_id": "docs",
+      "status": "completed",
+      "priority": 1,
+      "effort": 2,
+      "department": "Docs & Delivery"
+    }
+  ],
+  "edges": [
+    {
+      "from": "78c25e13b5784556abfc62e6a752c8b3",
+      "to": "2e8a52b96f3d4e5e899513113c7d863b"
+    },
+    {
+      "from": "2e8a52b96f3d4e5e899513113c7d863b",
+      "to": "605a7c796ca64e65a00329c64e785e60"
+    },
+    {
+      "from": "2e8a52b96f3d4e5e899513113c7d863b",
+      "to": "54e74e2b653847ffaf53b9874b14fb94"
+    },
+    {
+      "from": "605a7c796ca64e65a00329c64e785e60",
+      "to": "efe1449d508d4c3cb5e6077a0722b98d"
+    },
+    {
+      "from": "54e74e2b653847ffaf53b9874b14fb94",
+      "to": "efe1449d508d4c3cb5e6077a0722b98d"
+    },
+    {
+      "from": "605a7c796ca64e65a00329c64e785e60",
+      "to": "00b5859960944b939a43cdf5b635f644"
+    },
+    {
+      "from": "54e74e2b653847ffaf53b9874b14fb94",
+      "to": "00b5859960944b939a43cdf5b635f644"
+    },
+    {
+      "from": "605a7c796ca64e65a00329c64e785e60",
+      "to": "54e49a04a6e24c218ec1f1d3c6b4e5a4"
+    },
+    {
+      "from": "54e74e2b653847ffaf53b9874b14fb94",
+      "to": "54e49a04a6e24c218ec1f1d3c6b4e5a4"
+    },
+    {
+      "from": "605a7c796ca64e65a00329c64e785e60",
+      "to": "db093632454c4536b76ba3336d7af7d2"
+    },
+    {
+      "from": "54e74e2b653847ffaf53b9874b14fb94",
+      "to": "db093632454c4536b76ba3336d7af7d2"
+    },
+    {
+      "from": "efe1449d508d4c3cb5e6077a0722b98d",
+      "to": "cb1761c674f74597a2c2da17182ac75f"
+    },
+    {
+      "from": "00b5859960944b939a43cdf5b635f644",
+      "to": "cb1761c674f74597a2c2da17182ac75f"
+    },
+    {
+      "from": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+      "to": "cb1761c674f74597a2c2da17182ac75f"
+    },
+    {
+      "from": "db093632454c4536b76ba3336d7af7d2",
+      "to": "cb1761c674f74597a2c2da17182ac75f"
+    }
+  ],
+  "external_ids": {
+    "t1": "78c25e13b5784556abfc62e6a752c8b3",
+    "t2": "2e8a52b96f3d4e5e899513113c7d863b",
+    "t3": "605a7c796ca64e65a00329c64e785e60",
+    "t4": "54e74e2b653847ffaf53b9874b14fb94",
+    "t5": "efe1449d508d4c3cb5e6077a0722b98d",
+    "t6": "00b5859960944b939a43cdf5b635f644",
+    "t7": "54e49a04a6e24c218ec1f1d3c6b4e5a4",
+    "t8": "db093632454c4536b76ba3336d7af7d2",
+    "t9": "cb1761c674f74597a2c2da17182ac75f"
+  },
+  "critical_path": [
+    "605a7c796ca64e65a00329c64e785e60"
+  ]
+}
